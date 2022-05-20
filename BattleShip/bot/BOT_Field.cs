@@ -50,7 +50,7 @@ namespace BattleShip
                     }
                 }
             }
-            switch(mode)
+            switch (mode)
             {
                 case "BOT":
                     MainForm.GetEnemyField(botField);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.bot;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,42 +13,27 @@ namespace BattleShip
         public const int MISS_CELL = 2;
         public const int HIT_CELL = 3;
 
+        MainForm form;
+
+        public BOT bot;
         private Bitmap field;
-        private Pen fieldBorder;
-        private Pen GamePen;
-        private Graphics graphics;
         private Dictionary<char, int> keys;
         private static List<Ship> playerShips;
-        private static bool startGameAllow, shipsPlaced;
+        private bool startGameAllow, isHit;
 
         private static int scale;
         private static int[,] playerField;
         private static int[,] enemyField;
 
-        public static List<Ship> GetShips => playerShips;
+        private int GameMode = 0;
 
-        public static void GetPlayerField(int[,] insertedField)
-        {
-            playerField = insertedField;
-            shipsPlaced = true;
-        }
-
-        public static void GetEnemyField(int[,] field)
-        {
-            enemyField = field;
-        }
-
-        public static int[,] SendField()
-        {
-            return playerField;
-        }
 
         public MainForm()
         {
             InitializeComponent();
             field = new Bitmap(BattleField.Width, BattleField.Height);
-            fieldBorder = new Pen(Color.Black, 2f);
-            GamePen = new Pen(Color.Red, 2f);
+            BattleField.Image = field;
+            isHit = true;
             playerField = new int[10, 10];
             enemyField = new int[10, 10];
             startGameAllow = false;
@@ -55,70 +41,51 @@ namespace BattleShip
             scale = BattleField.Width / 10;
             StartGameBut.Enabled = false;
             DictionaryStuff();
-            FieldInitialize();
+            DrawController.FieldInitialize(ref BattleField, 10);
         }
 
-        private void FieldInitialize()
+        public MainForm(int mode, ref int[,] _enemyField)
         {
-            graphics = Graphics.FromImage(field);
-            for (int i = 0; i < field.Width; i++)
-            {
-                for (int j = 0; j < field.Height; j++)
-                {
-                    field.SetPixel(i, j, Color.White);
-                }
-            }
-            for (int k = 0; k < field.Width / 10; k++)
-            {
-                graphics.DrawLine(fieldBorder, new Point(field.Width * k / 10, 0), new Point(field.Width * k / 10, field.Height));
-                graphics.DrawLine(fieldBorder, new Point(0, field.Height * k / 10), new Point(field.Width, field.Height * k / 10));
-            }
+            InitializeComponent();
+            field = new Bitmap(BattleField.Width, BattleField.Height);
             BattleField.Image = field;
+            isHit = false;
+            playerField = new int[10, 10];
+            enemyField = _enemyField;
+            startGameAllow = false;
+            keys = new Dictionary<char, int>();
+            scale = BattleField.Width / 10;
+            StartGameBut.Enabled = false;
+            switch(mode)
+            {
+                case 1:
+                    bot = null;
+                    break;
+                case 2:
+                    bot = new BOT(playerShips);
+                    while (CheckField(enemyField, SHIP_CELL) != 20)
+                        BOT_Field.FieldAutoInit("BOT");
+                    break;
+            }
+            DictionaryStuff();
+            DrawController.FieldInitialize(ref BattleField, 10);
         }
 
-        public void DrawField()
+        public static List<Ship> GetShips => playerShips;
+
+        public static void GetPlayerField(int[,] insertedField)
         {
-            int indent = scale / 2;
-            graphics = Graphics.FromImage(field);
-            for(int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    switch(playerField[i, j])
-                    {
-                        case EMPTY_CELL:
-                            for (int k = j * scale + 1; k < (j + 1) * scale - 1; k++)
-                            {
-                                for (int l = i * scale + 1; l < (i + 1) * scale - 1; l++)
-                                {
-                                    field.SetPixel(k, l, Color.White);
-                                }
-                            }
-                            break;
-                        case SHIP_CELL:
-                            for (int k = j * scale + 1; k < (j + 1) * scale - 1; k++)
-                            {
-                                for (int l = i * scale + 1; l < (i + 1) * scale - 1; l++)
-                                {
-                                    field.SetPixel(k, l, Color.DarkGray);
-                                }
-                            }
-                            break;
-                        case MISS_CELL:
-                            GamePen.Color = Color.Black;
-                            graphics.DrawEllipse(GamePen, new Rectangle(
-                                j * scale + 1 + indent / 2, i * scale + 1 + indent / 2,
-                                indent, indent));
-                            break;
-                        case HIT_CELL:
-                            GamePen.Color = Color.Red;
-                            graphics.DrawLine(GamePen, new Point(j * scale - 1, i * scale - 1), new Point((j + 1) * scale - 1, (i + 1) * scale - 1));
-                            graphics.DrawLine(GamePen, new Point((j + 1) * scale - 1, i * scale - 1), new Point((j) * scale - 1, (i + 1) * scale - 1));
-                            break;
-                    }
-                }
-            }
-            BattleField.Image = field;
+            playerField = insertedField;
+        }
+
+        public static void GetEnemyField(int[,] field)
+        {
+            enemyField = field;
+        }
+
+        public int[,] SendField()
+        {
+            return playerField;
         }
 
         private void DictionaryStuff()
@@ -153,33 +120,72 @@ namespace BattleShip
 
         private void GameButClick(object sender, EventArgs e)
         {
-            if (!startGameAllow) return;
+            if (!startGameAllow || !isHit) return;
             Point step;
 
             if(((Button)sender).BackColor.ToArgb() == Color.White.ToArgb())
             {
                 step = PlayerStep(((Button)sender).Name);
-                if (playerField[step.Y, step.X] == SHIP_CELL)
+                if (enemyField[step.Y, step.X] == SHIP_CELL)
                 {
-                    playerField[step.Y, step.X] = HIT_CELL;
+                    enemyField[step.Y, step.X] = HIT_CELL;
                     ((Button)sender).BackColor = Color.LightGreen;
-                    if (CheckField(playerField, HIT_CELL) == 20) MessageBox.Show("Win!");
+                    if (CheckField(enemyField, HIT_CELL) == 20) MessageBox.Show("Win!");
                 }
                 else
                 {
-                    playerField[step.Y, step.X] = MISS_CELL;
+                    enemyField[step.Y, step.X] = MISS_CELL;
                     ((Button)sender).BackColor = Color.DarkGray;
+                    if(bot != null) BotStep();
                 }
             }
-            DrawField();
+            DrawController.DrawField(BattleField, field, playerField);
+        }
+
+        private void BotStep()
+        {
+            Point enemyStep;
+            enemyStep = bot.Step();
+            switch (playerField[enemyStep.Y, enemyStep.X])
+            {
+                case SHIP_CELL:
+                    playerField[enemyStep.Y, enemyStep.X] = HIT_CELL;
+                    DrawController.DrawField(BattleField, field, playerField);
+                    BotStep();
+                    break;
+                case EMPTY_CELL:
+                    playerField[enemyStep.Y, enemyStep.X] = MISS_CELL;
+                    break;
+            }
+
         }
 
         private void StartGameBut_Click(object sender, EventArgs e)
         {
+            if (GameMode == 0)
+            {
+                MessageBox.Show("Choose game mode!");
+                return;
+            }
+
             shipPlace.Enabled = false;
             startGameAllow = true;
             ResetGame.Enabled = false;
             StartGameBut.Enabled = false;
+
+            form = new MainForm(GameMode, ref playerField);
+
+            switch (GameMode)
+            {
+                case 1:
+                    bot = null;
+                    break;
+                case 2:
+                    bot = new BOT(playerShips);
+                    while (CheckField(enemyField, SHIP_CELL) != 20)
+                        BOT_Field.FieldAutoInit("BOT");
+                    break;
+            }
         }
 
         private void StopGame_Click(object sender, EventArgs e)
@@ -187,14 +193,12 @@ namespace BattleShip
             shipPlace.Enabled = true;
             startGameAllow = false;
             ResetGame.Enabled = true;
-            if(shipsPlaced)StartGameBut.Enabled = true;
         }
 
         private void Reset()
         {
-            FieldInitialize();
+            DrawController.FieldInitialize(ref BattleField, 10);
             startGameAllow = false;
-            shipsPlaced = false;
             shipPlace.Enabled = true;
             StartGameBut.Enabled = false;
             playerField = new int[10, 10];
@@ -210,20 +214,30 @@ namespace BattleShip
             Reset();
         }
 
+        private void GM_Player_Click(object sender, EventArgs e)
+        {
+            GameMode = 1;
+            GM.Text = "PLAYER";
+        }
+
+        private void GM_BOT_Click(object sender, EventArgs e)
+        {
+            GameMode = 2;
+            GM.Text = "BOT";
+        }
+
         private void shipPlace_Click(object sender, EventArgs e)
         {
-            FieldInitialize();
+            DrawController.FieldInitialize(ref BattleField, 10);
 
             AddShips.AddShipsForm startGame = new AddShips.AddShipsForm();
             startGame.ShowDialog();
-
-            if (shipsPlaced) 
-            {
                 StartGameBut.Enabled = true;
-                BOT_Field.FieldAutoInit("BOT");
-                while (CheckField(enemyField, SHIP_CELL) != 20) BOT_Field.FieldAutoInit("BOT");
-                DrawField();
-            }            
+                while (CheckField(playerField, SHIP_CELL) != 20)
+                    BOT_Field.FieldAutoInit("PLAYER");
+                playerShips = startGame.SendShipsList();
+                startGameAllow = true;
+                DrawController.DrawField(BattleField, field, playerField);
         }
     }
 }

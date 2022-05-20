@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace BattleShip.bot
 {
@@ -12,6 +13,9 @@ namespace BattleShip.bot
      */
     public class BOT
     {
+        private static Timer stepTime;
+        private static int time;
+
         private int[,] field;
         private int missSteps, searchShip;
         private Random rnd;
@@ -37,28 +41,41 @@ namespace BattleShip.bot
             }
             isHit = wreckedShipIsExist = false;
 
+            time = 0;
+            stepTime = new Timer();
+            stepTime.Interval = 1000;
+            stepTime.Tick += StepTime_Tick;
+        }
+
+        private void StepTime_Tick(object sender, EventArgs e)
+        {
+            time++;
+            if(time >= 3)
+            {
+
+            }
         }
 
         private List<Point> CheckStep(Point step)
         {
             List<Point> points = new List<Point>();
-            switch(step.X)
+            switch (step.X)
             {
                 case 0:
-                    switch(step.Y)
+                    switch (step.Y)
                     {
                         case 0:
-                            points.Add(new Point(step.X + 1, step.Y));
-                            points.Add(new Point(step.X, step.Y + 1));
+                            points.Add(new Point(step.Y, step.X + 1));
+                            points.Add(new Point(step.Y + 1, step.X));
                             break;
                         case 9:
-                            points.Add(new Point(step.X + 1, step.Y));
-                            points.Add(new Point(step.X, step.Y - 1));
+                            points.Add(new Point(step.Y, step.X + 1));
+                            points.Add(new Point(step.Y - 1, step.X));
                             break;
                         default:
-                            points.Add(new Point(step.X + 1, step.Y));
-                            points.Add(new Point(step.X, step.Y + 1));
-                            points.Add(new Point(step.X, step.Y - 1));
+                            points.Add(new Point(step.Y, step.X + 1));
+                            points.Add(new Point(step.Y + 1, step.X));
+                            points.Add(new Point(step.Y - 1, step.X));
                             break;
                     }
                     break;
@@ -66,17 +83,18 @@ namespace BattleShip.bot
                     switch (step.Y)
                     {
                         case 0:
-                            points.Add(new Point(step.X - 1, step.Y));
-                            points.Add(new Point(step.X, step.Y + 1));
+                            points.Add(new Point(step.Y, step.X - 1));
+                            points.Add(new Point(step.Y + 1, step.X));
                             break;
                         case 9:
-                            points.Add(new Point(step.X - 1, step.Y));
-                            points.Add(new Point(step.X, step.Y - 1));
+                            points.Add(new Point(step.Y, step.X - 1));
+                            points.Add(new Point(step.Y - 1, step.X));
                             break;
                         default:
-                            points.Add(new Point(step.X - 1, step.Y));
-                            points.Add(new Point(step.X, step.Y + 1));
-                            points.Add(new Point(step.X, step.Y - 1));
+                            points.Add(new Point(step.Y, step.X - 1));
+                            points.Add(new Point(step.Y + 1, step.X));
+                            points.Add(new Point(step.Y - 1, step.X));
+                            points.Add(new Point(step.Y, step.X + 1));
                             break;
                     }
                     break;
@@ -97,6 +115,7 @@ namespace BattleShip.bot
                             points.Add(new Point(step.X, step.Y - 1));
                             points.Add(new Point(step.X + 1, step.Y));
                             points.Add(new Point(step.X, step.Y + 1));
+                            points.Add(new Point(step.X - 1, step.Y));
                             break;
                     }
                     break;
@@ -183,24 +202,24 @@ namespace BattleShip.bot
                                 if((isHit && lastStep.Y < 9) && 
                                     lastStep.Y - wreckedShipPoints[wreckedShipPoints.Count - 1 - searchShip].Y >= 1)
                                 {
-                                    step = new Point(lastStep.X, lastStep.Y + 1);
+                                    step = new Point(lastStep.Y + 1, lastStep.X);
                                 }
                                 else
                                 {
                                     lastStep = wreckedShipPoints[wreckedShipPoints.Count - 1 - searchShip];
-                                    step = new Point(lastStep.X, lastStep.Y - 1);
+                                    step = new Point(lastStep.Y - 1, lastStep.X);
                                 }
                                 break;
                             case "horizontal":
                                 if (isHit && lastStep.X < 9 &&
                                     lastStep.X - wreckedShipPoints[wreckedShipPoints.Count - 1 - searchShip].X >= 1)
                                 {
-                                    step = new Point(lastStep.X + 1, lastStep.Y);
+                                    step = new Point(lastStep.Y, lastStep.X + 1);
                                 }
                                 else
                                 {
                                     lastStep = wreckedShipPoints[wreckedShipPoints.Count - 1 - searchShip];
-                                    step = new Point(lastStep.X - 1, lastStep.Y);
+                                    step = new Point(lastStep.Y, lastStep.X - 1);
                                 }
                                 break;
                         }

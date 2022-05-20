@@ -29,8 +29,15 @@ namespace BattleShip
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BattleField = new System.Windows.Forms.PictureBox();
             this.Actions = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.GM_BOT = new System.Windows.Forms.Button();
+            this.GM_Player = new System.Windows.Forms.Button();
+            this.GM = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ResetGame = new System.Windows.Forms.Button();
             this.StopGame = new System.Windows.Forms.Button();
             this.shipPlace = new System.Windows.Forms.Button();
             this.StartGameBut = new System.Windows.Forms.Button();
@@ -135,9 +142,10 @@ namespace BattleShip
             this.chooseButH10 = new System.Windows.Forms.Button();
             this.chooseButI10 = new System.Windows.Forms.Button();
             this.chooseButJ10 = new System.Windows.Forms.Button();
-            this.ResetGame = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).BeginInit();
             this.Actions.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.GameButs.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,6 +162,7 @@ namespace BattleShip
             // 
             // Actions
             // 
+            this.Actions.Controls.Add(this.panel1);
             this.Actions.Controls.Add(this.ResetGame);
             this.Actions.Controls.Add(this.StopGame);
             this.Actions.Controls.Add(this.shipPlace);
@@ -163,11 +172,72 @@ namespace BattleShip
             this.Actions.Size = new System.Drawing.Size(594, 267);
             this.Actions.TabIndex = 2;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.GM_BOT);
+            this.panel1.Controls.Add(this.GM_Player);
+            this.panel1.Controls.Add(this.GM);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(13, 104);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(552, 145);
+            this.panel1.TabIndex = 4;
+            // 
+            // GM_BOT
+            // 
+            this.GM_BOT.Location = new System.Drawing.Point(285, 79);
+            this.GM_BOT.Name = "GM_BOT";
+            this.GM_BOT.Size = new System.Drawing.Size(261, 51);
+            this.GM_BOT.TabIndex = 3;
+            this.GM_BOT.Text = "BOT";
+            this.GM_BOT.UseVisualStyleBackColor = true;
+            this.GM_BOT.Click += new System.EventHandler(this.GM_BOT_Click);
+            // 
+            // GM_Player
+            // 
+            this.GM_Player.Location = new System.Drawing.Point(18, 79);
+            this.GM_Player.Name = "GM_Player";
+            this.GM_Player.Size = new System.Drawing.Size(261, 51);
+            this.GM_Player.TabIndex = 2;
+            this.GM_Player.Text = "Player";
+            this.GM_Player.UseVisualStyleBackColor = true;
+            this.GM_Player.Click += new System.EventHandler(this.GM_Player_Click);
+            // 
+            // GM
+            // 
+            this.GM.AutoSize = true;
+            this.GM.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GM.Location = new System.Drawing.Point(206, 12);
+            this.GM.Name = "GM";
+            this.GM.Size = new System.Drawing.Size(45, 35);
+            this.GM.TabIndex = 1;
+            this.GM.Text = "......";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(18, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Game Mode:";
+            // 
+            // ResetGame
+            // 
+            this.ResetGame.Location = new System.Drawing.Point(442, 14);
+            this.ResetGame.Name = "ResetGame";
+            this.ResetGame.Size = new System.Drawing.Size(133, 51);
+            this.ResetGame.TabIndex = 3;
+            this.ResetGame.Text = "Сброс";
+            this.ResetGame.UseVisualStyleBackColor = true;
+            this.ResetGame.Click += new System.EventHandler(this.ResetGame_Click);
+            // 
             // StopGame
             // 
-            this.StopGame.Location = new System.Drawing.Point(412, 14);
+            this.StopGame.Location = new System.Drawing.Point(298, 14);
             this.StopGame.Name = "StopGame";
-            this.StopGame.Size = new System.Drawing.Size(163, 51);
+            this.StopGame.Size = new System.Drawing.Size(133, 51);
             this.StopGame.TabIndex = 2;
             this.StopGame.Text = "Остановить бой";
             this.StopGame.UseVisualStyleBackColor = true;
@@ -175,9 +245,9 @@ namespace BattleShip
             // 
             // shipPlace
             // 
-            this.shipPlace.Location = new System.Drawing.Point(215, 14);
+            this.shipPlace.Location = new System.Drawing.Point(159, 14);
             this.shipPlace.Name = "shipPlace";
-            this.shipPlace.Size = new System.Drawing.Size(163, 51);
+            this.shipPlace.Size = new System.Drawing.Size(133, 51);
             this.shipPlace.TabIndex = 1;
             this.shipPlace.Text = "Расставить корабли";
             this.shipPlace.UseVisualStyleBackColor = true;
@@ -187,7 +257,7 @@ namespace BattleShip
             // 
             this.StartGameBut.Location = new System.Drawing.Point(15, 14);
             this.StartGameBut.Name = "StartGameBut";
-            this.StartGameBut.Size = new System.Drawing.Size(165, 51);
+            this.StartGameBut.Size = new System.Drawing.Size(133, 51);
             this.StartGameBut.TabIndex = 0;
             this.StartGameBut.Text = "Начать бой";
             this.StartGameBut.UseVisualStyleBackColor = true;
@@ -1501,16 +1571,6 @@ namespace BattleShip
             this.chooseButJ10.UseVisualStyleBackColor = false;
             this.chooseButJ10.Click += new System.EventHandler(this.GameButClick);
             // 
-            // ResetGame
-            // 
-            this.ResetGame.Location = new System.Drawing.Point(15, 91);
-            this.ResetGame.Name = "ResetGame";
-            this.ResetGame.Size = new System.Drawing.Size(165, 51);
-            this.ResetGame.TabIndex = 3;
-            this.ResetGame.Text = "Сброс";
-            this.ResetGame.UseVisualStyleBackColor = true;
-            this.ResetGame.Click += new System.EventHandler(this.ResetGame_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1527,6 +1587,8 @@ namespace BattleShip
             this.Click += new System.EventHandler(this.GameButClick);
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).EndInit();
             this.Actions.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.GameButs.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1641,6 +1703,12 @@ namespace BattleShip
         private System.Windows.Forms.Button StopGame;
         private System.Windows.Forms.Button shipPlace;
         private System.Windows.Forms.Button ResetGame;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button GM_BOT;
+        private System.Windows.Forms.Button GM_Player;
+        private System.Windows.Forms.Label GM;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

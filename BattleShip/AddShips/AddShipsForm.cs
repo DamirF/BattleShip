@@ -8,8 +8,6 @@ namespace BattleShip.AddShips
     public partial class AddShipsForm : Form
     {
         private Bitmap field, addField;
-        private Pen fieldBorder;
-        private Graphics graphics;
         private Ship ship = null;
         private List<Ship> ships;
         private Timer autoPlace;
@@ -27,18 +25,20 @@ namespace BattleShip.AddShips
             shipsField = _field;
         }
 
-        //public static List<Ship> SendShipsList()
-        //{
-        //    return ships;
-        //}
+        public List<Ship> SendShipsList()
+        {
+            return ships;
+        }
 
         public AddShipsForm()
         {
             InitializeComponent();
 
             field = new Bitmap(Field.Width, Field.Height);
+            Field.Image = field;
             addField = new Bitmap(AddShipPB.Width, AddShipPB.Height);
-            fieldBorder = new Pen(Color.Black, 2f);
+            AddShipPB.Image = addField;
+
             scale = Field.Width / 10;
             _scale = AddShipPB.Width / 5;
 
@@ -62,8 +62,8 @@ namespace BattleShip.AddShips
 
             decksCountCheck = new int[4] { 0, 0, 0, 0 };
 
-            FieldInitialize(Field, field, 10);
-            FieldInitialize(AddShipPB, addField, 5);
+            DrawController.FieldInitialize(ref Field, 10);
+            DrawController.FieldInitialize(ref AddShipPB, 5);
 
             shipOrientation.SelectedIndex = 0;
             shipOrientation.Text = shipOrientation.Items[0].ToString();
@@ -81,13 +81,11 @@ namespace BattleShip.AddShips
 
         private void Clear()
         {
-            FieldInitialize(Field, field, 10);
-            FieldInitialize(AddShipPB, addField, 5);
+            DrawController.FieldInitialize(ref Field, 10);
+            DrawController.FieldInitialize(ref AddShipPB, 5);
             auto = false;
             ship = null;
             ships.Clear();
-            Field.Image = field;
-            AddShipPB.Image = addField;
 
             for (int i = 0; i < 10; i++)
             {
@@ -109,24 +107,6 @@ namespace BattleShip.AddShips
             e.Handled = true;
         }
 
-        private void FieldInitialize(PictureBox PB, Bitmap map, int scale)
-        {
-            graphics = Graphics.FromImage(map);
-            for (int i = 0; i < map.Width; i++)
-            {
-                for (int j = 0; j < map.Height; j++)
-                {
-                    map.SetPixel(i, j, Color.White);
-                }
-            }
-            for (int k = 0; k < map.Width / 10; k++)
-            {
-                graphics.DrawLine(fieldBorder, new Point(map.Width * k / scale, 0), new Point(map.Width * k / scale, map.Height));
-                graphics.DrawLine(fieldBorder, new Point(0, map.Height * k / scale), new Point(map.Width, map.Height * k / scale));
-            }
-            PB.Image = map;
-        }
-
         private void AddShip_Click(object sender, EventArgs e)
         {
             
@@ -138,7 +118,7 @@ namespace BattleShip.AddShips
             }
             else
             {
-                FieldInitialize(AddShipPB, addField, 5);
+                DrawController.FieldInitialize(ref AddShipPB, 5);
                 Point p = new Point(1, 1);
                 ship = new Ship(Convert.ToInt32(decksCount.Value), shipOrientation.SelectedIndex, p);
                 ship.DefShipCoord(p);
@@ -188,7 +168,7 @@ namespace BattleShip.AddShips
             if (ship != null)
             {
                 ship = null;
-                FieldInitialize(AddShipPB, addField, 5);
+                DrawController.FieldInitialize(ref AddShipPB, 5);
             }
             else if (ship == null && CheckedShipIsExist())
             {
@@ -234,10 +214,10 @@ namespace BattleShip.AddShips
                         Ship.ShipTranslation(ships[ships.Count - 1], MainForm.SHIP_CELL, shipsField);
                         ship = null;
                         DrawShip(ships[ships.Count - 1], field, scale, Color.DarkGray);
-                        FieldInitialize(AddShipPB, addField, 5);
+                        DrawController.FieldInitialize(ref AddShipPB, 5);
                     }
                     else MessageBox.Show("Error!");
-                    //Field.Image = field;
+
                 }
                 if (ship == null && CheckedShipIsExist())
                 {
@@ -281,7 +261,7 @@ namespace BattleShip.AddShips
                     }
                 }
                 ship = null;
-                FieldInitialize(AddShipPB, addField, 5);
+                DrawController.FieldInitialize(ref AddShipPB, 5);
             }
             else if (field.GetPixel(e.X, e.Y).ToArgb() == Color.LightGreen.ToArgb())
             {
@@ -342,8 +322,8 @@ namespace BattleShip.AddShips
             autoPlaceTime = 0;
             auto = true;
             autoPlace.Enabled = true;
-            BattleShip.BOT_Field.FieldAutoInit("PLAYER");
-            while(MainForm.CheckField(shipsField, MainForm.SHIP_CELL) != 20) BattleShip.BOT_Field.FieldAutoInit("PLAYER");
+            BOT_Field.FieldAutoInit("PLAYER");
+            while(MainForm.CheckField(shipsField, MainForm.SHIP_CELL) != 20) BOT_Field.FieldAutoInit("PLAYER");
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
