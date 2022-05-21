@@ -6,11 +6,6 @@ using System.Windows.Forms;
 
 namespace BattleShip.bot
 {
-    /*
-    посмотришь как я в классе BOT_Field сделал
-    основная функция которая будет отвечать за ход бота public static
-    остальные вспомогательные private static
-     */
     public class BOT
     {
         private static Timer stepTime;
@@ -23,22 +18,18 @@ namespace BattleShip.bot
         private List<Point> availableSteps;
         private bool isHit, wreckedShipIsExist;
         private List<Ship> playerShips;
-        private static List<Point> wreckedShipPoints = new List<Point>();
-        private static int IndexOfShip;
-        private static Point destroyCell = new Point(-1, -1);
+        private List<Point> wreckedShipPoints = new List<Point>();
+        private int IndexOfShip;
+        private readonly Point destroyCell = new Point(-1, -1);
 
-        public BOT(List<Ship> ships)
+        public BOT(List<Ship> ships, int[,] field)
         {
-            field = new int[10, 10];
+            this.field = field;
             missSteps = searchShip = 0;
             rnd = new Random();
             steps = new List<Point>();
             availableSteps = new List<Point> ();
             playerShips = ships;
-            for(int i = 0; i < playerShips.Count; i++)
-            {
-                Ship.ShipTranslation(playerShips[i], 1, field);
-            }
             isHit = wreckedShipIsExist = false;
 
             time = 0;
@@ -136,7 +127,8 @@ namespace BattleShip.bot
             do
             {
                 step = new Point(rnd.Next(0, 10), rnd.Next(0, 10));
-            } while (field[step.Y, step.X] != MainForm.EMPTY_CELL);
+            } while (field[step.Y, step.X] == MainForm.HIT_CELL ||
+            field[step.Y, step.X] == MainForm.MISS_CELL);
             return step;
         }
 

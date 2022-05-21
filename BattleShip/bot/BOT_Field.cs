@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.AddShips;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -24,17 +25,17 @@ namespace BattleShip
 
             ClearField();
             InitShipsList();
-            while(BOTships_NotIns.Count != 0)
+            while (BOTships_NotIns.Count != 0)
             {
-                if(BOTships_NotIns.Count <= 1) index = 0;
+                if (BOTships_NotIns.Count <= 1) index = 0;
                 else index = rnd.Next(BOTships_NotIns.Count - 1);
 
                 Ship ship = BOTships_NotIns[index];
 
-                for(int row = 0; row < 10; row++)
+                for (int row = 0; row < 10; row++)
                 {
                     column = rnd.Next(0, 10);
-                    ship.startPoint = new Point(column, row);
+                    ship.startPoint = new Point(row, column);
                     ship.DefShipCoord(ship.startPoint);
                     for (int j = 0; j < ship.points.Count; j++)
                     {
@@ -56,7 +57,9 @@ namespace BattleShip
                     MainForm.GetEnemyField(botField);
                     break;
                 case "PLAYER":
-                    AddShips.AddShipsForm.GetField(botField);
+                    AddShipsForm.GetField(botField);
+                    //MainForm.GetPlayerField(botField);
+                    AddShipsForm.GetShipsList(BOTships_Ins);
                     break;
             }
         }

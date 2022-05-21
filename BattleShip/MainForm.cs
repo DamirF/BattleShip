@@ -62,7 +62,7 @@ namespace BattleShip
                     bot = null;
                     break;
                 case 2:
-                    bot = new BOT(playerShips);
+                    bot = new BOT(playerShips, playerField);
                     while (CheckField(enemyField, SHIP_CELL) != 20)
                         BOT_Field.FieldAutoInit("BOT");
                     break;
@@ -72,6 +72,7 @@ namespace BattleShip
         }
 
         public static List<Ship> GetShips => playerShips;
+        public static void SendShips(List<Ship> ships) => playerShips = ships;
 
         public static void GetPlayerField(int[,] insertedField)
         {
@@ -173,15 +174,13 @@ namespace BattleShip
             ResetGame.Enabled = false;
             StartGameBut.Enabled = false;
 
-            form = new MainForm(GameMode, ref playerField);
-
             switch (GameMode)
             {
                 case 1:
                     bot = null;
                     break;
                 case 2:
-                    bot = new BOT(playerShips);
+                    bot = new BOT(playerShips, playerField);
                     while (CheckField(enemyField, SHIP_CELL) != 20)
                         BOT_Field.FieldAutoInit("BOT");
                     break;
@@ -232,12 +231,21 @@ namespace BattleShip
 
             AddShips.AddShipsForm startGame = new AddShips.AddShipsForm();
             startGame.ShowDialog();
-                StartGameBut.Enabled = true;
-                while (CheckField(playerField, SHIP_CELL) != 20)
-                    BOT_Field.FieldAutoInit("PLAYER");
-                playerShips = startGame.SendShipsList();
-                startGameAllow = true;
-                DrawController.DrawField(BattleField, field, playerField);
+            StartGameBut.Enabled = true;
+
+            //while (CheckField(playerField, SHIP_CELL) != 20)
+            //    BOT_Field.FieldAutoInit("BOT");
+
+            playerShips = startGame.SendShipsList();
+            for(int i =0; i < playerShips.Count; i++)
+            {
+                for(int j = 0; j < playerShips[i].points.Count; j++)
+                {
+                    playerField[playerShips[i].points[j].Y, playerShips[i].points[j].X] = 1;
+                }
+            }
+            startGameAllow = true;
+            DrawController.DrawField(BattleField, field, playerField);
         }
     }
 }

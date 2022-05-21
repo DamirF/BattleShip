@@ -9,7 +9,7 @@ namespace BattleShip.AddShips
     {
         private Bitmap field, addField;
         private Ship ship = null;
-        private List<Ship> ships;
+        private static List<Ship> ships;
         private Timer autoPlace;
         private bool auto;
 
@@ -28,6 +28,11 @@ namespace BattleShip.AddShips
         public List<Ship> SendShipsList()
         {
             return ships;
+        }
+
+        public static void GetShipsList(List<Ship> list)
+        {
+            ships = list;
         }
 
         public AddShipsForm()
@@ -75,6 +80,7 @@ namespace BattleShip.AddShips
             if (autoPlaceTime > 1200)
             {
                 Save();
+                autoPlace.Stop();
                 Close();
             }
         }
@@ -358,7 +364,7 @@ namespace BattleShip.AddShips
         {
             if (auto)
             {
-                MainForm.GetPlayerField(shipsField);
+                MainForm.SendShips(ships);
                 Close();
             }
             else
@@ -366,7 +372,7 @@ namespace BattleShip.AddShips
                 if (ships.Count < 10) MessageBox.Show("Расставте все корабли!");
                 else
                 {
-                    MainForm.GetPlayerField(shipsField);
+                    MainForm.SendShips(ships);
                     Close();
                 }
             }

@@ -59,12 +59,12 @@ namespace BattleShip
         public void DefShipCoord(Point start)
         {
             points.Clear();
-            start = startPoint;
+            //start = startPoint;
             if (Orientation == 0)
             {
                 for (int i = 0; i < decksCount; i++)
                 {
-                    Point point = new Point(start.X + i, start.Y);
+                    Point point = new Point(start.Y, start.X + i);
                     points.Add(point);
                 }
             }
@@ -72,7 +72,7 @@ namespace BattleShip
             {
                 for (int i = 0; i < decksCount; i++)
                 {
-                    Point point = new Point(start.X, start.Y + i);
+                    Point point = new Point(start.Y + i, start.X);
                     points.Add(point);
                 }
             }
@@ -83,8 +83,7 @@ namespace BattleShip
             int X = insertedShip.points[index].X;
             int Y = insertedShip.points[index].Y;
             bool PutResult;
-            //if(field[Y,X] != Form1.SHIP_CELL)
-            //{
+
                 if ((X > 0 && Y > 0) && (X < 9 && Y < 9))
                 {
                     if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL && field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X + 1] != MainForm.SHIP_CELL &&
@@ -154,8 +153,6 @@ namespace BattleShip
                         PutResult = false;
                 }
                 else PutResult = false;
-            //}
-            //else PutResult = false;
             return PutResult;
         }
 
