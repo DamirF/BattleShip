@@ -11,7 +11,8 @@ namespace BattleShip
         public bool isChoosed;
         public List<Point> points;
         private bool isDestroyed;
-        private static Point destroyedCell = new Point(-1,-1);
+        private int wreckedDeskCount;
+        private static Point destroyedCell = new Point(-1, -1);
 
         public Ship(int decksCount, int orientation, Point startPoint)
         {
@@ -20,16 +21,16 @@ namespace BattleShip
             this.startPoint = startPoint;
             isChoosed = false;
             points = new List<Point>();
-            isDestroyed = false;
+            wreckedDeskCount = 0;
         }
 
         public bool IsDestroyed() => isDestroyed;
 
         public static int FindShip(List<Ship> ships, Point shoot)
         {
-            for(int i = 0; i < ships.Count; i++)
+            for (int i = 0; i < ships.Count; i++)
             {
-                for(int j = 0; j < ships[i].points.Count; j++)
+                for (int j = 0; j < ships[i].points.Count; j++)
                 {
                     if (ships[i].points[j] == shoot) return i;
                 }
@@ -39,22 +40,22 @@ namespace BattleShip
 
         public static int FindShipPoint(Ship ship, Point shoot)
         {
-            for(int i = 0; i < ship.points.Count; i++)
+            for (int i = 0; i < ship.points.Count; i++)
             {
-                if(ship.points[i] == shoot) return i;
+                if (ship.points[i] == shoot) return i;
             }
             return -1;
         }
 
-        public static void DestroyShip(Ship ship)
+        public static void DestroyShip(Ship ship) =>
+            ship.isDestroyed = true ? (ship.wreckedDeskCount >= ship.decksCount) : false;
+
+        public void DestroyDesk()
         {
-            int _decksCount = 0;
-            for(int i = 0; i < ship.points.Count; i++)
-            {
-                if (ship.points[i] == destroyedCell) _decksCount++;
-            }
-            if (_decksCount == ship.decksCount) ship.isDestroyed = true;
+            wreckedDeskCount++;
         }
+
+
 
         public void DefShipCoord(Point start)
         {
@@ -64,7 +65,7 @@ namespace BattleShip
             {
                 for (int i = 0; i < decksCount; i++)
                 {
-                    Point point = new Point(start.Y, start.X + i);
+                    Point point = new Point(start.X + i, start.Y);
                     points.Add(point);
                 }
             }
@@ -72,7 +73,7 @@ namespace BattleShip
             {
                 for (int i = 0; i < decksCount; i++)
                 {
-                    Point point = new Point(start.Y + i, start.X);
+                    Point point = new Point(start.X, start.Y + i);
                     points.Add(point);
                 }
             }
@@ -84,75 +85,75 @@ namespace BattleShip
             int Y = insertedShip.points[index].Y;
             bool PutResult;
 
-                if ((X > 0 && Y > 0) && (X < 9 && Y < 9))
-                {
-                    if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL && field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X + 1] != MainForm.SHIP_CELL &&
-                        field[Y - 1, X] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (X == 0 && Y == 0)
-                {
-                    if (field[Y + 1, X + 1] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (X == 9 && Y == 9)
-                {
-                    if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y - 1, X] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (X == 0 && Y == 9)
-                {
-                    if (field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y - 1, X] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (X == 9 && Y == 0)
-                {
-                    if (field[Y + 1, X - 1] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (X == 0 && Y > 0 && Y < 9)
-                {
-                    if (field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X + 1] != MainForm.SHIP_CELL &&
-                        field[Y - 1, X] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (X == 9 && Y > 0 && Y < 9)
-                {
-                    if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL &&
-                        field[Y - 1, X] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (Y == 0 && X > 0 && X < 9)
-                {
-                    if (field[Y + 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL &&
-                        field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else if (Y == 9 && X > 0 && X < 9)
-                {
-                    if (field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y - 1, X - 1] != MainForm.SHIP_CELL &&
-                        field[Y - 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
-                        PutResult = true;
-                    else
-                        PutResult = false;
-                }
-                else PutResult = false;
+            if ((X > 0 && Y > 0) && (X < 9 && Y < 9))
+            {
+                if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL && field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X + 1] != MainForm.SHIP_CELL &&
+                    field[Y - 1, X] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (X == 0 && Y == 0)
+            {
+                if (field[Y + 1, X + 1] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (X == 9 && Y == 9)
+            {
+                if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y - 1, X] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (X == 0 && Y == 9)
+            {
+                if (field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y - 1, X] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (X == 9 && Y == 0)
+            {
+                if (field[Y + 1, X - 1] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (X == 0 && Y > 0 && Y < 9)
+            {
+                if (field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X + 1] != MainForm.SHIP_CELL &&
+                    field[Y - 1, X] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (X == 9 && Y > 0 && Y < 9)
+            {
+                if (field[Y - 1, X - 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL &&
+                    field[Y - 1, X] != MainForm.SHIP_CELL && field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (Y == 0 && X > 0 && X < 9)
+            {
+                if (field[Y + 1, X + 1] != MainForm.SHIP_CELL && field[Y + 1, X - 1] != MainForm.SHIP_CELL &&
+                    field[Y + 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else if (Y == 9 && X > 0 && X < 9)
+            {
+                if (field[Y - 1, X + 1] != MainForm.SHIP_CELL && field[Y - 1, X - 1] != MainForm.SHIP_CELL &&
+                    field[Y - 1, X] != MainForm.SHIP_CELL && field[Y, X - 1] != MainForm.SHIP_CELL && field[Y, X + 1] != MainForm.SHIP_CELL)
+                    PutResult = true;
+                else
+                    PutResult = false;
+            }
+            else PutResult = false;
             return PutResult;
         }
 

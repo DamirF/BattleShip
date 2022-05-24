@@ -151,12 +151,11 @@ namespace BattleShip
             // 
             // BattleField
             // 
-            this.BattleField.Location = new System.Drawing.Point(15, 17);
-            this.BattleField.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.BattleField.MaximumSize = new System.Drawing.Size(900, 900);
-            this.BattleField.MinimumSize = new System.Drawing.Size(900, 900);
+            this.BattleField.Location = new System.Drawing.Point(13, 13);
+            this.BattleField.MaximumSize = new System.Drawing.Size(800, 800);
+            this.BattleField.MinimumSize = new System.Drawing.Size(800, 800);
             this.BattleField.Name = "BattleField";
-            this.BattleField.Size = new System.Drawing.Size(900, 900);
+            this.BattleField.Size = new System.Drawing.Size(800, 800);
             this.BattleField.TabIndex = 0;
             this.BattleField.TabStop = false;
             // 
@@ -167,9 +166,10 @@ namespace BattleShip
             this.Actions.Controls.Add(this.StopGame);
             this.Actions.Controls.Add(this.shipPlace);
             this.Actions.Controls.Add(this.StartGameBut);
-            this.Actions.Location = new System.Drawing.Point(924, 644);
+            this.Actions.Location = new System.Drawing.Point(843, 483);
+            this.Actions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Actions.Name = "Actions";
-            this.Actions.Size = new System.Drawing.Size(594, 267);
+            this.Actions.Size = new System.Drawing.Size(520, 200);
             this.Actions.TabIndex = 2;
             // 
             // panel1
@@ -178,16 +178,18 @@ namespace BattleShip
             this.panel1.Controls.Add(this.GM_Player);
             this.panel1.Controls.Add(this.GM);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(13, 104);
+            this.panel1.Location = new System.Drawing.Point(11, 78);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(552, 145);
+            this.panel1.Size = new System.Drawing.Size(483, 109);
             this.panel1.TabIndex = 4;
             // 
             // GM_BOT
             // 
-            this.GM_BOT.Location = new System.Drawing.Point(285, 79);
+            this.GM_BOT.Location = new System.Drawing.Point(249, 59);
+            this.GM_BOT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GM_BOT.Name = "GM_BOT";
-            this.GM_BOT.Size = new System.Drawing.Size(261, 51);
+            this.GM_BOT.Size = new System.Drawing.Size(228, 38);
             this.GM_BOT.TabIndex = 3;
             this.GM_BOT.Text = "BOT";
             this.GM_BOT.UseVisualStyleBackColor = true;
@@ -195,9 +197,10 @@ namespace BattleShip
             // 
             // GM_Player
             // 
-            this.GM_Player.Location = new System.Drawing.Point(18, 79);
+            this.GM_Player.Location = new System.Drawing.Point(16, 59);
+            this.GM_Player.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GM_Player.Name = "GM_Player";
-            this.GM_Player.Size = new System.Drawing.Size(261, 51);
+            this.GM_Player.Size = new System.Drawing.Size(228, 38);
             this.GM_Player.TabIndex = 2;
             this.GM_Player.Text = "Player";
             this.GM_Player.UseVisualStyleBackColor = true;
@@ -207,9 +210,9 @@ namespace BattleShip
             // 
             this.GM.AutoSize = true;
             this.GM.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GM.Location = new System.Drawing.Point(206, 12);
+            this.GM.Location = new System.Drawing.Point(180, 9);
             this.GM.Name = "GM";
-            this.GM.Size = new System.Drawing.Size(45, 35);
+            this.GM.Size = new System.Drawing.Size(36, 28);
             this.GM.TabIndex = 1;
             this.GM.Text = "......";
             // 
@@ -217,17 +220,18 @@ namespace BattleShip
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(18, 12);
+            this.label1.Location = new System.Drawing.Point(16, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 35);
+            this.label1.Size = new System.Drawing.Size(124, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Game Mode:";
             // 
             // ResetGame
             // 
-            this.ResetGame.Location = new System.Drawing.Point(442, 14);
+            this.ResetGame.Location = new System.Drawing.Point(387, 10);
+            this.ResetGame.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ResetGame.Name = "ResetGame";
-            this.ResetGame.Size = new System.Drawing.Size(133, 51);
+            this.ResetGame.Size = new System.Drawing.Size(116, 38);
             this.ResetGame.TabIndex = 3;
             this.ResetGame.Text = "Сброс";
             this.ResetGame.UseVisualStyleBackColor = true;
@@ -235,9 +239,10 @@ namespace BattleShip
             // 
             // StopGame
             // 
-            this.StopGame.Location = new System.Drawing.Point(298, 14);
+            this.StopGame.Location = new System.Drawing.Point(261, 10);
+            this.StopGame.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StopGame.Name = "StopGame";
-            this.StopGame.Size = new System.Drawing.Size(133, 51);
+            this.StopGame.Size = new System.Drawing.Size(116, 38);
             this.StopGame.TabIndex = 2;
             this.StopGame.Text = "Остановить бой";
             this.StopGame.UseVisualStyleBackColor = true;
@@ -245,9 +250,10 @@ namespace BattleShip
             // 
             // shipPlace
             // 
-            this.shipPlace.Location = new System.Drawing.Point(159, 14);
+            this.shipPlace.Location = new System.Drawing.Point(139, 10);
+            this.shipPlace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.shipPlace.Name = "shipPlace";
-            this.shipPlace.Size = new System.Drawing.Size(133, 51);
+            this.shipPlace.Size = new System.Drawing.Size(116, 38);
             this.shipPlace.TabIndex = 1;
             this.shipPlace.Text = "Расставить корабли";
             this.shipPlace.UseVisualStyleBackColor = true;
@@ -255,9 +261,10 @@ namespace BattleShip
             // 
             // StartGameBut
             // 
-            this.StartGameBut.Location = new System.Drawing.Point(15, 14);
+            this.StartGameBut.Location = new System.Drawing.Point(13, 10);
+            this.StartGameBut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.StartGameBut.Name = "StartGameBut";
-            this.StartGameBut.Size = new System.Drawing.Size(133, 51);
+            this.StartGameBut.Size = new System.Drawing.Size(116, 38);
             this.StartGameBut.TabIndex = 0;
             this.StartGameBut.Text = "Начать бой";
             this.StartGameBut.UseVisualStyleBackColor = true;
@@ -365,19 +372,20 @@ namespace BattleShip
             this.GameButs.Controls.Add(this.chooseButH10);
             this.GameButs.Controls.Add(this.chooseButI10);
             this.GameButs.Controls.Add(this.chooseButJ10);
-            this.GameButs.Location = new System.Drawing.Point(924, 17);
+            this.GameButs.Location = new System.Drawing.Point(843, 13);
+            this.GameButs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GameButs.Name = "GameButs";
-            this.GameButs.Size = new System.Drawing.Size(588, 621);
+            this.GameButs.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.GameButs.Size = new System.Drawing.Size(514, 466);
             this.GameButs.TabIndex = 3;
             this.GameButs.TabStop = false;
             // 
             // chooseButA1
             // 
             this.chooseButA1.BackColor = System.Drawing.Color.White;
-            this.chooseButA1.Location = new System.Drawing.Point(13, 21);
-            this.chooseButA1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA1.Location = new System.Drawing.Point(11, 16);
             this.chooseButA1.Name = "chooseButA1";
-            this.chooseButA1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA1.Size = new System.Drawing.Size(45, 38);
             this.chooseButA1.TabIndex = 90;
             this.chooseButA1.Text = "А1";
             this.chooseButA1.UseVisualStyleBackColor = false;
@@ -386,10 +394,9 @@ namespace BattleShip
             // chooseButB1
             // 
             this.chooseButB1.BackColor = System.Drawing.Color.White;
-            this.chooseButB1.Location = new System.Drawing.Point(70, 21);
-            this.chooseButB1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB1.Location = new System.Drawing.Point(61, 16);
             this.chooseButB1.Name = "chooseButB1";
-            this.chooseButB1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB1.Size = new System.Drawing.Size(45, 38);
             this.chooseButB1.TabIndex = 91;
             this.chooseButB1.Text = "Б1";
             this.chooseButB1.UseVisualStyleBackColor = false;
@@ -398,10 +405,9 @@ namespace BattleShip
             // chooseButC1
             // 
             this.chooseButC1.BackColor = System.Drawing.Color.White;
-            this.chooseButC1.Location = new System.Drawing.Point(127, 21);
-            this.chooseButC1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC1.Location = new System.Drawing.Point(111, 16);
             this.chooseButC1.Name = "chooseButC1";
-            this.chooseButC1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC1.Size = new System.Drawing.Size(45, 38);
             this.chooseButC1.TabIndex = 92;
             this.chooseButC1.Text = "В1";
             this.chooseButC1.UseVisualStyleBackColor = false;
@@ -410,10 +416,9 @@ namespace BattleShip
             // chooseButD1
             // 
             this.chooseButD1.BackColor = System.Drawing.Color.White;
-            this.chooseButD1.Location = new System.Drawing.Point(184, 21);
-            this.chooseButD1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD1.Location = new System.Drawing.Point(161, 16);
             this.chooseButD1.Name = "chooseButD1";
-            this.chooseButD1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD1.Size = new System.Drawing.Size(45, 38);
             this.chooseButD1.TabIndex = 93;
             this.chooseButD1.Text = "Г1";
             this.chooseButD1.UseVisualStyleBackColor = false;
@@ -422,10 +427,9 @@ namespace BattleShip
             // chooseButE1
             // 
             this.chooseButE1.BackColor = System.Drawing.Color.White;
-            this.chooseButE1.Location = new System.Drawing.Point(241, 21);
-            this.chooseButE1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE1.Location = new System.Drawing.Point(211, 16);
             this.chooseButE1.Name = "chooseButE1";
-            this.chooseButE1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE1.Size = new System.Drawing.Size(45, 38);
             this.chooseButE1.TabIndex = 94;
             this.chooseButE1.Text = "Д1";
             this.chooseButE1.UseVisualStyleBackColor = false;
@@ -434,10 +438,9 @@ namespace BattleShip
             // chooseButF1
             // 
             this.chooseButF1.BackColor = System.Drawing.Color.White;
-            this.chooseButF1.Location = new System.Drawing.Point(296, 21);
-            this.chooseButF1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF1.Location = new System.Drawing.Point(259, 16);
             this.chooseButF1.Name = "chooseButF1";
-            this.chooseButF1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF1.Size = new System.Drawing.Size(45, 38);
             this.chooseButF1.TabIndex = 95;
             this.chooseButF1.Text = "Е1";
             this.chooseButF1.UseVisualStyleBackColor = false;
@@ -446,10 +449,9 @@ namespace BattleShip
             // chooseButG1
             // 
             this.chooseButG1.BackColor = System.Drawing.Color.White;
-            this.chooseButG1.Location = new System.Drawing.Point(353, 21);
-            this.chooseButG1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG1.Location = new System.Drawing.Point(309, 16);
             this.chooseButG1.Name = "chooseButG1";
-            this.chooseButG1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG1.Size = new System.Drawing.Size(45, 38);
             this.chooseButG1.TabIndex = 96;
             this.chooseButG1.Text = "Ж1";
             this.chooseButG1.UseVisualStyleBackColor = false;
@@ -458,10 +460,9 @@ namespace BattleShip
             // chooseButH1
             // 
             this.chooseButH1.BackColor = System.Drawing.Color.White;
-            this.chooseButH1.Location = new System.Drawing.Point(410, 21);
-            this.chooseButH1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH1.Location = new System.Drawing.Point(359, 16);
             this.chooseButH1.Name = "chooseButH1";
-            this.chooseButH1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH1.Size = new System.Drawing.Size(45, 38);
             this.chooseButH1.TabIndex = 97;
             this.chooseButH1.Text = "З1";
             this.chooseButH1.UseVisualStyleBackColor = false;
@@ -470,10 +471,9 @@ namespace BattleShip
             // chooseButI1
             // 
             this.chooseButI1.BackColor = System.Drawing.Color.White;
-            this.chooseButI1.Location = new System.Drawing.Point(467, 21);
-            this.chooseButI1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI1.Location = new System.Drawing.Point(409, 16);
             this.chooseButI1.Name = "chooseButI1";
-            this.chooseButI1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI1.Size = new System.Drawing.Size(45, 38);
             this.chooseButI1.TabIndex = 98;
             this.chooseButI1.Text = "И1";
             this.chooseButI1.UseVisualStyleBackColor = false;
@@ -482,10 +482,9 @@ namespace BattleShip
             // chooseButJ1
             // 
             this.chooseButJ1.BackColor = System.Drawing.Color.White;
-            this.chooseButJ1.Location = new System.Drawing.Point(524, 21);
-            this.chooseButJ1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ1.Location = new System.Drawing.Point(458, 16);
             this.chooseButJ1.Name = "chooseButJ1";
-            this.chooseButJ1.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ1.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ1.TabIndex = 99;
             this.chooseButJ1.Text = "К1";
             this.chooseButJ1.UseVisualStyleBackColor = false;
@@ -494,10 +493,9 @@ namespace BattleShip
             // chooseButA2
             // 
             this.chooseButA2.BackColor = System.Drawing.Color.White;
-            this.chooseButA2.Location = new System.Drawing.Point(13, 79);
-            this.chooseButA2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA2.Location = new System.Drawing.Point(11, 59);
             this.chooseButA2.Name = "chooseButA2";
-            this.chooseButA2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA2.Size = new System.Drawing.Size(45, 38);
             this.chooseButA2.TabIndex = 101;
             this.chooseButA2.Text = "А2";
             this.chooseButA2.UseVisualStyleBackColor = false;
@@ -506,10 +504,9 @@ namespace BattleShip
             // chooseButB2
             // 
             this.chooseButB2.BackColor = System.Drawing.Color.White;
-            this.chooseButB2.Location = new System.Drawing.Point(70, 79);
-            this.chooseButB2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB2.Location = new System.Drawing.Point(61, 59);
             this.chooseButB2.Name = "chooseButB2";
-            this.chooseButB2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB2.Size = new System.Drawing.Size(45, 38);
             this.chooseButB2.TabIndex = 103;
             this.chooseButB2.Text = "Б2";
             this.chooseButB2.UseVisualStyleBackColor = false;
@@ -518,10 +515,9 @@ namespace BattleShip
             // chooseButC2
             // 
             this.chooseButC2.BackColor = System.Drawing.Color.White;
-            this.chooseButC2.Location = new System.Drawing.Point(127, 79);
-            this.chooseButC2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC2.Location = new System.Drawing.Point(111, 59);
             this.chooseButC2.Name = "chooseButC2";
-            this.chooseButC2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC2.Size = new System.Drawing.Size(45, 38);
             this.chooseButC2.TabIndex = 105;
             this.chooseButC2.Text = "В2";
             this.chooseButC2.UseVisualStyleBackColor = false;
@@ -530,10 +526,9 @@ namespace BattleShip
             // chooseButD2
             // 
             this.chooseButD2.BackColor = System.Drawing.Color.White;
-            this.chooseButD2.Location = new System.Drawing.Point(184, 79);
-            this.chooseButD2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD2.Location = new System.Drawing.Point(161, 59);
             this.chooseButD2.Name = "chooseButD2";
-            this.chooseButD2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD2.Size = new System.Drawing.Size(45, 38);
             this.chooseButD2.TabIndex = 106;
             this.chooseButD2.Text = "Г2";
             this.chooseButD2.UseVisualStyleBackColor = false;
@@ -542,10 +537,9 @@ namespace BattleShip
             // chooseButE2
             // 
             this.chooseButE2.BackColor = System.Drawing.Color.White;
-            this.chooseButE2.Location = new System.Drawing.Point(241, 79);
-            this.chooseButE2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE2.Location = new System.Drawing.Point(211, 59);
             this.chooseButE2.Name = "chooseButE2";
-            this.chooseButE2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE2.Size = new System.Drawing.Size(45, 38);
             this.chooseButE2.TabIndex = 108;
             this.chooseButE2.Text = "Д2";
             this.chooseButE2.UseVisualStyleBackColor = false;
@@ -554,10 +548,9 @@ namespace BattleShip
             // chooseButF2
             // 
             this.chooseButF2.BackColor = System.Drawing.Color.White;
-            this.chooseButF2.Location = new System.Drawing.Point(296, 79);
-            this.chooseButF2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF2.Location = new System.Drawing.Point(259, 59);
             this.chooseButF2.Name = "chooseButF2";
-            this.chooseButF2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF2.Size = new System.Drawing.Size(45, 38);
             this.chooseButF2.TabIndex = 110;
             this.chooseButF2.Text = "Е2";
             this.chooseButF2.UseVisualStyleBackColor = false;
@@ -566,10 +559,9 @@ namespace BattleShip
             // chooseButG2
             // 
             this.chooseButG2.BackColor = System.Drawing.Color.White;
-            this.chooseButG2.Location = new System.Drawing.Point(353, 79);
-            this.chooseButG2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG2.Location = new System.Drawing.Point(309, 59);
             this.chooseButG2.Name = "chooseButG2";
-            this.chooseButG2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG2.Size = new System.Drawing.Size(45, 38);
             this.chooseButG2.TabIndex = 112;
             this.chooseButG2.Text = "Ж2";
             this.chooseButG2.UseVisualStyleBackColor = false;
@@ -578,10 +570,9 @@ namespace BattleShip
             // chooseButH2
             // 
             this.chooseButH2.BackColor = System.Drawing.Color.White;
-            this.chooseButH2.Location = new System.Drawing.Point(410, 79);
-            this.chooseButH2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH2.Location = new System.Drawing.Point(359, 59);
             this.chooseButH2.Name = "chooseButH2";
-            this.chooseButH2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH2.Size = new System.Drawing.Size(45, 38);
             this.chooseButH2.TabIndex = 114;
             this.chooseButH2.Text = "З2";
             this.chooseButH2.UseVisualStyleBackColor = false;
@@ -590,10 +581,9 @@ namespace BattleShip
             // chooseButI2
             // 
             this.chooseButI2.BackColor = System.Drawing.Color.White;
-            this.chooseButI2.Location = new System.Drawing.Point(467, 79);
-            this.chooseButI2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI2.Location = new System.Drawing.Point(409, 59);
             this.chooseButI2.Name = "chooseButI2";
-            this.chooseButI2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI2.Size = new System.Drawing.Size(45, 38);
             this.chooseButI2.TabIndex = 116;
             this.chooseButI2.Text = "И2";
             this.chooseButI2.UseVisualStyleBackColor = false;
@@ -602,10 +592,9 @@ namespace BattleShip
             // chooseButJ2
             // 
             this.chooseButJ2.BackColor = System.Drawing.Color.White;
-            this.chooseButJ2.Location = new System.Drawing.Point(524, 79);
-            this.chooseButJ2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ2.Location = new System.Drawing.Point(458, 59);
             this.chooseButJ2.Name = "chooseButJ2";
-            this.chooseButJ2.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ2.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ2.TabIndex = 118;
             this.chooseButJ2.Text = "К2";
             this.chooseButJ2.UseVisualStyleBackColor = false;
@@ -614,10 +603,9 @@ namespace BattleShip
             // chooseButA3
             // 
             this.chooseButA3.BackColor = System.Drawing.Color.White;
-            this.chooseButA3.Location = new System.Drawing.Point(13, 138);
-            this.chooseButA3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA3.Location = new System.Drawing.Point(11, 104);
             this.chooseButA3.Name = "chooseButA3";
-            this.chooseButA3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA3.Size = new System.Drawing.Size(45, 38);
             this.chooseButA3.TabIndex = 120;
             this.chooseButA3.Text = "А3";
             this.chooseButA3.UseVisualStyleBackColor = false;
@@ -626,10 +614,9 @@ namespace BattleShip
             // chooseButB3
             // 
             this.chooseButB3.BackColor = System.Drawing.Color.White;
-            this.chooseButB3.Location = new System.Drawing.Point(70, 138);
-            this.chooseButB3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB3.Location = new System.Drawing.Point(61, 104);
             this.chooseButB3.Name = "chooseButB3";
-            this.chooseButB3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB3.Size = new System.Drawing.Size(45, 38);
             this.chooseButB3.TabIndex = 121;
             this.chooseButB3.Text = "Б3";
             this.chooseButB3.UseVisualStyleBackColor = false;
@@ -638,10 +625,9 @@ namespace BattleShip
             // chooseButC3
             // 
             this.chooseButC3.BackColor = System.Drawing.Color.White;
-            this.chooseButC3.Location = new System.Drawing.Point(127, 138);
-            this.chooseButC3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC3.Location = new System.Drawing.Point(111, 104);
             this.chooseButC3.Name = "chooseButC3";
-            this.chooseButC3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC3.Size = new System.Drawing.Size(45, 38);
             this.chooseButC3.TabIndex = 122;
             this.chooseButC3.Text = "В3";
             this.chooseButC3.UseVisualStyleBackColor = false;
@@ -650,10 +636,9 @@ namespace BattleShip
             // chooseButD3
             // 
             this.chooseButD3.BackColor = System.Drawing.Color.White;
-            this.chooseButD3.Location = new System.Drawing.Point(184, 138);
-            this.chooseButD3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD3.Location = new System.Drawing.Point(161, 104);
             this.chooseButD3.Name = "chooseButD3";
-            this.chooseButD3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD3.Size = new System.Drawing.Size(45, 38);
             this.chooseButD3.TabIndex = 123;
             this.chooseButD3.Text = "Г3";
             this.chooseButD3.UseVisualStyleBackColor = false;
@@ -662,10 +647,9 @@ namespace BattleShip
             // chooseButE3
             // 
             this.chooseButE3.BackColor = System.Drawing.Color.White;
-            this.chooseButE3.Location = new System.Drawing.Point(241, 138);
-            this.chooseButE3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE3.Location = new System.Drawing.Point(211, 104);
             this.chooseButE3.Name = "chooseButE3";
-            this.chooseButE3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE3.Size = new System.Drawing.Size(45, 38);
             this.chooseButE3.TabIndex = 124;
             this.chooseButE3.Text = "Д3";
             this.chooseButE3.UseVisualStyleBackColor = false;
@@ -674,10 +658,9 @@ namespace BattleShip
             // chooseButF3
             // 
             this.chooseButF3.BackColor = System.Drawing.Color.White;
-            this.chooseButF3.Location = new System.Drawing.Point(296, 138);
-            this.chooseButF3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF3.Location = new System.Drawing.Point(259, 104);
             this.chooseButF3.Name = "chooseButF3";
-            this.chooseButF3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF3.Size = new System.Drawing.Size(45, 38);
             this.chooseButF3.TabIndex = 125;
             this.chooseButF3.Text = "Е3";
             this.chooseButF3.UseVisualStyleBackColor = false;
@@ -686,10 +669,9 @@ namespace BattleShip
             // chooseButG3
             // 
             this.chooseButG3.BackColor = System.Drawing.Color.White;
-            this.chooseButG3.Location = new System.Drawing.Point(353, 138);
-            this.chooseButG3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG3.Location = new System.Drawing.Point(309, 104);
             this.chooseButG3.Name = "chooseButG3";
-            this.chooseButG3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG3.Size = new System.Drawing.Size(45, 38);
             this.chooseButG3.TabIndex = 126;
             this.chooseButG3.Text = "Ж3";
             this.chooseButG3.UseVisualStyleBackColor = false;
@@ -698,10 +680,9 @@ namespace BattleShip
             // chooseButH3
             // 
             this.chooseButH3.BackColor = System.Drawing.Color.White;
-            this.chooseButH3.Location = new System.Drawing.Point(410, 138);
-            this.chooseButH3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH3.Location = new System.Drawing.Point(359, 104);
             this.chooseButH3.Name = "chooseButH3";
-            this.chooseButH3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH3.Size = new System.Drawing.Size(45, 38);
             this.chooseButH3.TabIndex = 127;
             this.chooseButH3.Text = "ЗЗ";
             this.chooseButH3.UseVisualStyleBackColor = false;
@@ -710,10 +691,9 @@ namespace BattleShip
             // chooseButI3
             // 
             this.chooseButI3.BackColor = System.Drawing.Color.White;
-            this.chooseButI3.Location = new System.Drawing.Point(467, 138);
-            this.chooseButI3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI3.Location = new System.Drawing.Point(409, 104);
             this.chooseButI3.Name = "chooseButI3";
-            this.chooseButI3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI3.Size = new System.Drawing.Size(45, 38);
             this.chooseButI3.TabIndex = 128;
             this.chooseButI3.Text = "И3";
             this.chooseButI3.UseVisualStyleBackColor = false;
@@ -722,10 +702,9 @@ namespace BattleShip
             // chooseButJ3
             // 
             this.chooseButJ3.BackColor = System.Drawing.Color.White;
-            this.chooseButJ3.Location = new System.Drawing.Point(524, 138);
-            this.chooseButJ3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ3.Location = new System.Drawing.Point(458, 104);
             this.chooseButJ3.Name = "chooseButJ3";
-            this.chooseButJ3.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ3.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ3.TabIndex = 129;
             this.chooseButJ3.Text = "К3";
             this.chooseButJ3.UseVisualStyleBackColor = false;
@@ -734,10 +713,9 @@ namespace BattleShip
             // chooseButA4
             // 
             this.chooseButA4.BackColor = System.Drawing.Color.White;
-            this.chooseButA4.Location = new System.Drawing.Point(13, 197);
-            this.chooseButA4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA4.Location = new System.Drawing.Point(11, 148);
             this.chooseButA4.Name = "chooseButA4";
-            this.chooseButA4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA4.Size = new System.Drawing.Size(45, 38);
             this.chooseButA4.TabIndex = 130;
             this.chooseButA4.Text = "А4";
             this.chooseButA4.UseVisualStyleBackColor = false;
@@ -746,10 +724,9 @@ namespace BattleShip
             // chooseButB4
             // 
             this.chooseButB4.BackColor = System.Drawing.Color.White;
-            this.chooseButB4.Location = new System.Drawing.Point(70, 197);
-            this.chooseButB4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB4.Location = new System.Drawing.Point(61, 148);
             this.chooseButB4.Name = "chooseButB4";
-            this.chooseButB4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB4.Size = new System.Drawing.Size(45, 38);
             this.chooseButB4.TabIndex = 131;
             this.chooseButB4.Text = "Б4";
             this.chooseButB4.UseVisualStyleBackColor = false;
@@ -758,10 +735,9 @@ namespace BattleShip
             // chooseButC4
             // 
             this.chooseButC4.BackColor = System.Drawing.Color.White;
-            this.chooseButC4.Location = new System.Drawing.Point(127, 197);
-            this.chooseButC4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC4.Location = new System.Drawing.Point(111, 148);
             this.chooseButC4.Name = "chooseButC4";
-            this.chooseButC4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC4.Size = new System.Drawing.Size(45, 38);
             this.chooseButC4.TabIndex = 132;
             this.chooseButC4.Text = "В4";
             this.chooseButC4.UseVisualStyleBackColor = false;
@@ -770,10 +746,9 @@ namespace BattleShip
             // chooseButD4
             // 
             this.chooseButD4.BackColor = System.Drawing.Color.White;
-            this.chooseButD4.Location = new System.Drawing.Point(184, 197);
-            this.chooseButD4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD4.Location = new System.Drawing.Point(161, 148);
             this.chooseButD4.Name = "chooseButD4";
-            this.chooseButD4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD4.Size = new System.Drawing.Size(45, 38);
             this.chooseButD4.TabIndex = 133;
             this.chooseButD4.Text = "Г4";
             this.chooseButD4.UseVisualStyleBackColor = false;
@@ -782,10 +757,9 @@ namespace BattleShip
             // chooseButE4
             // 
             this.chooseButE4.BackColor = System.Drawing.Color.White;
-            this.chooseButE4.Location = new System.Drawing.Point(241, 197);
-            this.chooseButE4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE4.Location = new System.Drawing.Point(211, 148);
             this.chooseButE4.Name = "chooseButE4";
-            this.chooseButE4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE4.Size = new System.Drawing.Size(45, 38);
             this.chooseButE4.TabIndex = 134;
             this.chooseButE4.Text = "Д4";
             this.chooseButE4.UseVisualStyleBackColor = false;
@@ -794,10 +768,9 @@ namespace BattleShip
             // chooseButF4
             // 
             this.chooseButF4.BackColor = System.Drawing.Color.White;
-            this.chooseButF4.Location = new System.Drawing.Point(296, 197);
-            this.chooseButF4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF4.Location = new System.Drawing.Point(259, 148);
             this.chooseButF4.Name = "chooseButF4";
-            this.chooseButF4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF4.Size = new System.Drawing.Size(45, 38);
             this.chooseButF4.TabIndex = 135;
             this.chooseButF4.Text = "Е4";
             this.chooseButF4.UseVisualStyleBackColor = false;
@@ -806,10 +779,9 @@ namespace BattleShip
             // chooseButG4
             // 
             this.chooseButG4.BackColor = System.Drawing.Color.White;
-            this.chooseButG4.Location = new System.Drawing.Point(353, 197);
-            this.chooseButG4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG4.Location = new System.Drawing.Point(309, 148);
             this.chooseButG4.Name = "chooseButG4";
-            this.chooseButG4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG4.Size = new System.Drawing.Size(45, 38);
             this.chooseButG4.TabIndex = 136;
             this.chooseButG4.Text = "Ж4";
             this.chooseButG4.UseVisualStyleBackColor = false;
@@ -818,10 +790,9 @@ namespace BattleShip
             // chooseButH4
             // 
             this.chooseButH4.BackColor = System.Drawing.Color.White;
-            this.chooseButH4.Location = new System.Drawing.Point(410, 197);
-            this.chooseButH4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH4.Location = new System.Drawing.Point(359, 148);
             this.chooseButH4.Name = "chooseButH4";
-            this.chooseButH4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH4.Size = new System.Drawing.Size(45, 38);
             this.chooseButH4.TabIndex = 137;
             this.chooseButH4.Text = "З4";
             this.chooseButH4.UseVisualStyleBackColor = false;
@@ -830,10 +801,9 @@ namespace BattleShip
             // chooseButI4
             // 
             this.chooseButI4.BackColor = System.Drawing.Color.White;
-            this.chooseButI4.Location = new System.Drawing.Point(467, 197);
-            this.chooseButI4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI4.Location = new System.Drawing.Point(409, 148);
             this.chooseButI4.Name = "chooseButI4";
-            this.chooseButI4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI4.Size = new System.Drawing.Size(45, 38);
             this.chooseButI4.TabIndex = 138;
             this.chooseButI4.Text = "И4";
             this.chooseButI4.UseVisualStyleBackColor = false;
@@ -842,10 +812,9 @@ namespace BattleShip
             // chooseButJ4
             // 
             this.chooseButJ4.BackColor = System.Drawing.Color.White;
-            this.chooseButJ4.Location = new System.Drawing.Point(524, 197);
-            this.chooseButJ4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ4.Location = new System.Drawing.Point(458, 148);
             this.chooseButJ4.Name = "chooseButJ4";
-            this.chooseButJ4.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ4.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ4.TabIndex = 139;
             this.chooseButJ4.Text = "К4";
             this.chooseButJ4.UseVisualStyleBackColor = false;
@@ -854,10 +823,9 @@ namespace BattleShip
             // chooseButA5
             // 
             this.chooseButA5.BackColor = System.Drawing.Color.White;
-            this.chooseButA5.Location = new System.Drawing.Point(13, 255);
-            this.chooseButA5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA5.Location = new System.Drawing.Point(11, 191);
             this.chooseButA5.Name = "chooseButA5";
-            this.chooseButA5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA5.Size = new System.Drawing.Size(45, 38);
             this.chooseButA5.TabIndex = 140;
             this.chooseButA5.Text = "А5";
             this.chooseButA5.UseVisualStyleBackColor = false;
@@ -866,10 +834,9 @@ namespace BattleShip
             // chooseButB5
             // 
             this.chooseButB5.BackColor = System.Drawing.Color.White;
-            this.chooseButB5.Location = new System.Drawing.Point(70, 255);
-            this.chooseButB5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB5.Location = new System.Drawing.Point(61, 191);
             this.chooseButB5.Name = "chooseButB5";
-            this.chooseButB5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB5.Size = new System.Drawing.Size(45, 38);
             this.chooseButB5.TabIndex = 141;
             this.chooseButB5.Text = "Б5";
             this.chooseButB5.UseVisualStyleBackColor = false;
@@ -878,10 +845,9 @@ namespace BattleShip
             // chooseButC5
             // 
             this.chooseButC5.BackColor = System.Drawing.Color.White;
-            this.chooseButC5.Location = new System.Drawing.Point(127, 255);
-            this.chooseButC5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC5.Location = new System.Drawing.Point(111, 191);
             this.chooseButC5.Name = "chooseButC5";
-            this.chooseButC5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC5.Size = new System.Drawing.Size(45, 38);
             this.chooseButC5.TabIndex = 142;
             this.chooseButC5.Text = "В5";
             this.chooseButC5.UseVisualStyleBackColor = false;
@@ -890,10 +856,9 @@ namespace BattleShip
             // chooseButD5
             // 
             this.chooseButD5.BackColor = System.Drawing.Color.White;
-            this.chooseButD5.Location = new System.Drawing.Point(184, 255);
-            this.chooseButD5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD5.Location = new System.Drawing.Point(161, 191);
             this.chooseButD5.Name = "chooseButD5";
-            this.chooseButD5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD5.Size = new System.Drawing.Size(45, 38);
             this.chooseButD5.TabIndex = 143;
             this.chooseButD5.Text = "Г5";
             this.chooseButD5.UseVisualStyleBackColor = false;
@@ -902,10 +867,9 @@ namespace BattleShip
             // chooseButE5
             // 
             this.chooseButE5.BackColor = System.Drawing.Color.White;
-            this.chooseButE5.Location = new System.Drawing.Point(241, 255);
-            this.chooseButE5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE5.Location = new System.Drawing.Point(211, 191);
             this.chooseButE5.Name = "chooseButE5";
-            this.chooseButE5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE5.Size = new System.Drawing.Size(45, 38);
             this.chooseButE5.TabIndex = 144;
             this.chooseButE5.Text = "Д5";
             this.chooseButE5.UseVisualStyleBackColor = false;
@@ -914,10 +878,9 @@ namespace BattleShip
             // chooseButF5
             // 
             this.chooseButF5.BackColor = System.Drawing.Color.White;
-            this.chooseButF5.Location = new System.Drawing.Point(296, 255);
-            this.chooseButF5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF5.Location = new System.Drawing.Point(259, 191);
             this.chooseButF5.Name = "chooseButF5";
-            this.chooseButF5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF5.Size = new System.Drawing.Size(45, 38);
             this.chooseButF5.TabIndex = 145;
             this.chooseButF5.Text = "Е5";
             this.chooseButF5.UseVisualStyleBackColor = false;
@@ -926,10 +889,9 @@ namespace BattleShip
             // chooseButG5
             // 
             this.chooseButG5.BackColor = System.Drawing.Color.White;
-            this.chooseButG5.Location = new System.Drawing.Point(353, 255);
-            this.chooseButG5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG5.Location = new System.Drawing.Point(309, 191);
             this.chooseButG5.Name = "chooseButG5";
-            this.chooseButG5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG5.Size = new System.Drawing.Size(45, 38);
             this.chooseButG5.TabIndex = 146;
             this.chooseButG5.Text = "Ж5";
             this.chooseButG5.UseVisualStyleBackColor = false;
@@ -938,10 +900,9 @@ namespace BattleShip
             // chooseButH5
             // 
             this.chooseButH5.BackColor = System.Drawing.Color.White;
-            this.chooseButH5.Location = new System.Drawing.Point(410, 255);
-            this.chooseButH5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH5.Location = new System.Drawing.Point(359, 191);
             this.chooseButH5.Name = "chooseButH5";
-            this.chooseButH5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH5.Size = new System.Drawing.Size(45, 38);
             this.chooseButH5.TabIndex = 147;
             this.chooseButH5.Text = "З5";
             this.chooseButH5.UseVisualStyleBackColor = false;
@@ -950,10 +911,9 @@ namespace BattleShip
             // chooseButI5
             // 
             this.chooseButI5.BackColor = System.Drawing.Color.White;
-            this.chooseButI5.Location = new System.Drawing.Point(467, 255);
-            this.chooseButI5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI5.Location = new System.Drawing.Point(409, 191);
             this.chooseButI5.Name = "chooseButI5";
-            this.chooseButI5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI5.Size = new System.Drawing.Size(45, 38);
             this.chooseButI5.TabIndex = 148;
             this.chooseButI5.Text = "И5";
             this.chooseButI5.UseVisualStyleBackColor = false;
@@ -962,10 +922,9 @@ namespace BattleShip
             // chooseButJ5
             // 
             this.chooseButJ5.BackColor = System.Drawing.Color.White;
-            this.chooseButJ5.Location = new System.Drawing.Point(524, 255);
-            this.chooseButJ5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ5.Location = new System.Drawing.Point(458, 191);
             this.chooseButJ5.Name = "chooseButJ5";
-            this.chooseButJ5.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ5.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ5.TabIndex = 149;
             this.chooseButJ5.Text = "К5";
             this.chooseButJ5.UseVisualStyleBackColor = false;
@@ -974,10 +933,9 @@ namespace BattleShip
             // chooseButA6
             // 
             this.chooseButA6.BackColor = System.Drawing.Color.White;
-            this.chooseButA6.Location = new System.Drawing.Point(13, 314);
-            this.chooseButA6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA6.Location = new System.Drawing.Point(11, 236);
             this.chooseButA6.Name = "chooseButA6";
-            this.chooseButA6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA6.Size = new System.Drawing.Size(45, 38);
             this.chooseButA6.TabIndex = 100;
             this.chooseButA6.Text = "А6";
             this.chooseButA6.UseVisualStyleBackColor = false;
@@ -986,10 +944,9 @@ namespace BattleShip
             // chooseButB6
             // 
             this.chooseButB6.BackColor = System.Drawing.Color.White;
-            this.chooseButB6.Location = new System.Drawing.Point(70, 314);
-            this.chooseButB6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB6.Location = new System.Drawing.Point(61, 236);
             this.chooseButB6.Name = "chooseButB6";
-            this.chooseButB6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB6.Size = new System.Drawing.Size(45, 38);
             this.chooseButB6.TabIndex = 102;
             this.chooseButB6.Text = "Б6";
             this.chooseButB6.UseVisualStyleBackColor = false;
@@ -998,10 +955,9 @@ namespace BattleShip
             // chooseButC6
             // 
             this.chooseButC6.BackColor = System.Drawing.Color.White;
-            this.chooseButC6.Location = new System.Drawing.Point(127, 314);
-            this.chooseButC6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC6.Location = new System.Drawing.Point(111, 236);
             this.chooseButC6.Name = "chooseButC6";
-            this.chooseButC6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC6.Size = new System.Drawing.Size(45, 38);
             this.chooseButC6.TabIndex = 104;
             this.chooseButC6.Text = "В6";
             this.chooseButC6.UseVisualStyleBackColor = false;
@@ -1010,10 +966,9 @@ namespace BattleShip
             // chooseButD6
             // 
             this.chooseButD6.BackColor = System.Drawing.Color.White;
-            this.chooseButD6.Location = new System.Drawing.Point(184, 314);
-            this.chooseButD6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD6.Location = new System.Drawing.Point(161, 236);
             this.chooseButD6.Name = "chooseButD6";
-            this.chooseButD6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD6.Size = new System.Drawing.Size(45, 38);
             this.chooseButD6.TabIndex = 107;
             this.chooseButD6.Text = "Г6";
             this.chooseButD6.UseVisualStyleBackColor = false;
@@ -1022,10 +977,9 @@ namespace BattleShip
             // chooseButE6
             // 
             this.chooseButE6.BackColor = System.Drawing.Color.White;
-            this.chooseButE6.Location = new System.Drawing.Point(241, 314);
-            this.chooseButE6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE6.Location = new System.Drawing.Point(211, 236);
             this.chooseButE6.Name = "chooseButE6";
-            this.chooseButE6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE6.Size = new System.Drawing.Size(45, 38);
             this.chooseButE6.TabIndex = 109;
             this.chooseButE6.Text = "Д6";
             this.chooseButE6.UseVisualStyleBackColor = false;
@@ -1034,10 +988,9 @@ namespace BattleShip
             // chooseButF6
             // 
             this.chooseButF6.BackColor = System.Drawing.Color.White;
-            this.chooseButF6.Location = new System.Drawing.Point(296, 314);
-            this.chooseButF6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF6.Location = new System.Drawing.Point(259, 236);
             this.chooseButF6.Name = "chooseButF6";
-            this.chooseButF6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF6.Size = new System.Drawing.Size(45, 38);
             this.chooseButF6.TabIndex = 111;
             this.chooseButF6.Text = "Е6";
             this.chooseButF6.UseVisualStyleBackColor = false;
@@ -1046,10 +999,9 @@ namespace BattleShip
             // chooseButG6
             // 
             this.chooseButG6.BackColor = System.Drawing.Color.White;
-            this.chooseButG6.Location = new System.Drawing.Point(353, 314);
-            this.chooseButG6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG6.Location = new System.Drawing.Point(309, 236);
             this.chooseButG6.Name = "chooseButG6";
-            this.chooseButG6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG6.Size = new System.Drawing.Size(45, 38);
             this.chooseButG6.TabIndex = 113;
             this.chooseButG6.Text = "Ж6";
             this.chooseButG6.UseVisualStyleBackColor = false;
@@ -1058,10 +1010,9 @@ namespace BattleShip
             // chooseButH6
             // 
             this.chooseButH6.BackColor = System.Drawing.Color.White;
-            this.chooseButH6.Location = new System.Drawing.Point(410, 314);
-            this.chooseButH6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH6.Location = new System.Drawing.Point(359, 236);
             this.chooseButH6.Name = "chooseButH6";
-            this.chooseButH6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH6.Size = new System.Drawing.Size(45, 38);
             this.chooseButH6.TabIndex = 115;
             this.chooseButH6.Text = "З6";
             this.chooseButH6.UseVisualStyleBackColor = false;
@@ -1070,10 +1021,9 @@ namespace BattleShip
             // chooseButI6
             // 
             this.chooseButI6.BackColor = System.Drawing.Color.White;
-            this.chooseButI6.Location = new System.Drawing.Point(467, 314);
-            this.chooseButI6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI6.Location = new System.Drawing.Point(409, 236);
             this.chooseButI6.Name = "chooseButI6";
-            this.chooseButI6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI6.Size = new System.Drawing.Size(45, 38);
             this.chooseButI6.TabIndex = 117;
             this.chooseButI6.Text = "И6";
             this.chooseButI6.UseVisualStyleBackColor = false;
@@ -1082,10 +1032,9 @@ namespace BattleShip
             // chooseButJ6
             // 
             this.chooseButJ6.BackColor = System.Drawing.Color.White;
-            this.chooseButJ6.Location = new System.Drawing.Point(524, 314);
-            this.chooseButJ6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ6.Location = new System.Drawing.Point(458, 236);
             this.chooseButJ6.Name = "chooseButJ6";
-            this.chooseButJ6.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ6.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ6.TabIndex = 119;
             this.chooseButJ6.Text = "К6";
             this.chooseButJ6.UseVisualStyleBackColor = false;
@@ -1094,10 +1043,9 @@ namespace BattleShip
             // chooseButA7
             // 
             this.chooseButA7.BackColor = System.Drawing.Color.White;
-            this.chooseButA7.Location = new System.Drawing.Point(13, 373);
-            this.chooseButA7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA7.Location = new System.Drawing.Point(11, 280);
             this.chooseButA7.Name = "chooseButA7";
-            this.chooseButA7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA7.Size = new System.Drawing.Size(45, 38);
             this.chooseButA7.TabIndex = 150;
             this.chooseButA7.Text = "А7";
             this.chooseButA7.UseVisualStyleBackColor = false;
@@ -1106,10 +1054,9 @@ namespace BattleShip
             // chooseButB7
             // 
             this.chooseButB7.BackColor = System.Drawing.Color.White;
-            this.chooseButB7.Location = new System.Drawing.Point(70, 373);
-            this.chooseButB7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB7.Location = new System.Drawing.Point(61, 280);
             this.chooseButB7.Name = "chooseButB7";
-            this.chooseButB7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB7.Size = new System.Drawing.Size(45, 38);
             this.chooseButB7.TabIndex = 151;
             this.chooseButB7.Text = "Б7";
             this.chooseButB7.UseVisualStyleBackColor = false;
@@ -1118,10 +1065,9 @@ namespace BattleShip
             // chooseButC7
             // 
             this.chooseButC7.BackColor = System.Drawing.Color.White;
-            this.chooseButC7.Location = new System.Drawing.Point(127, 373);
-            this.chooseButC7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC7.Location = new System.Drawing.Point(111, 280);
             this.chooseButC7.Name = "chooseButC7";
-            this.chooseButC7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC7.Size = new System.Drawing.Size(45, 38);
             this.chooseButC7.TabIndex = 152;
             this.chooseButC7.Text = "В7";
             this.chooseButC7.UseVisualStyleBackColor = false;
@@ -1130,10 +1076,9 @@ namespace BattleShip
             // chooseButD7
             // 
             this.chooseButD7.BackColor = System.Drawing.Color.White;
-            this.chooseButD7.Location = new System.Drawing.Point(184, 373);
-            this.chooseButD7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD7.Location = new System.Drawing.Point(161, 280);
             this.chooseButD7.Name = "chooseButD7";
-            this.chooseButD7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD7.Size = new System.Drawing.Size(45, 38);
             this.chooseButD7.TabIndex = 153;
             this.chooseButD7.Text = "Г7";
             this.chooseButD7.UseVisualStyleBackColor = false;
@@ -1142,10 +1087,9 @@ namespace BattleShip
             // chooseButE7
             // 
             this.chooseButE7.BackColor = System.Drawing.Color.White;
-            this.chooseButE7.Location = new System.Drawing.Point(241, 373);
-            this.chooseButE7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE7.Location = new System.Drawing.Point(211, 280);
             this.chooseButE7.Name = "chooseButE7";
-            this.chooseButE7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE7.Size = new System.Drawing.Size(45, 38);
             this.chooseButE7.TabIndex = 154;
             this.chooseButE7.Text = "Д7";
             this.chooseButE7.UseVisualStyleBackColor = false;
@@ -1154,10 +1098,9 @@ namespace BattleShip
             // chooseButF7
             // 
             this.chooseButF7.BackColor = System.Drawing.Color.White;
-            this.chooseButF7.Location = new System.Drawing.Point(296, 373);
-            this.chooseButF7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF7.Location = new System.Drawing.Point(259, 280);
             this.chooseButF7.Name = "chooseButF7";
-            this.chooseButF7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF7.Size = new System.Drawing.Size(45, 38);
             this.chooseButF7.TabIndex = 155;
             this.chooseButF7.Text = "Е7";
             this.chooseButF7.UseVisualStyleBackColor = false;
@@ -1166,10 +1109,9 @@ namespace BattleShip
             // chooseButG7
             // 
             this.chooseButG7.BackColor = System.Drawing.Color.White;
-            this.chooseButG7.Location = new System.Drawing.Point(353, 373);
-            this.chooseButG7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG7.Location = new System.Drawing.Point(309, 280);
             this.chooseButG7.Name = "chooseButG7";
-            this.chooseButG7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG7.Size = new System.Drawing.Size(45, 38);
             this.chooseButG7.TabIndex = 156;
             this.chooseButG7.Text = "Ж7";
             this.chooseButG7.UseVisualStyleBackColor = false;
@@ -1178,10 +1120,9 @@ namespace BattleShip
             // chooseButH7
             // 
             this.chooseButH7.BackColor = System.Drawing.Color.White;
-            this.chooseButH7.Location = new System.Drawing.Point(410, 373);
-            this.chooseButH7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH7.Location = new System.Drawing.Point(359, 280);
             this.chooseButH7.Name = "chooseButH7";
-            this.chooseButH7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH7.Size = new System.Drawing.Size(45, 38);
             this.chooseButH7.TabIndex = 157;
             this.chooseButH7.Text = "З7";
             this.chooseButH7.UseVisualStyleBackColor = false;
@@ -1190,10 +1131,9 @@ namespace BattleShip
             // chooseButI7
             // 
             this.chooseButI7.BackColor = System.Drawing.Color.White;
-            this.chooseButI7.Location = new System.Drawing.Point(467, 373);
-            this.chooseButI7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI7.Location = new System.Drawing.Point(409, 280);
             this.chooseButI7.Name = "chooseButI7";
-            this.chooseButI7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI7.Size = new System.Drawing.Size(45, 38);
             this.chooseButI7.TabIndex = 158;
             this.chooseButI7.Text = "И7";
             this.chooseButI7.UseVisualStyleBackColor = false;
@@ -1202,10 +1142,9 @@ namespace BattleShip
             // chooseButJ7
             // 
             this.chooseButJ7.BackColor = System.Drawing.Color.White;
-            this.chooseButJ7.Location = new System.Drawing.Point(524, 373);
-            this.chooseButJ7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ7.Location = new System.Drawing.Point(458, 280);
             this.chooseButJ7.Name = "chooseButJ7";
-            this.chooseButJ7.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ7.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ7.TabIndex = 159;
             this.chooseButJ7.Text = "К7";
             this.chooseButJ7.UseVisualStyleBackColor = false;
@@ -1214,10 +1153,9 @@ namespace BattleShip
             // chooseButA8
             // 
             this.chooseButA8.BackColor = System.Drawing.Color.White;
-            this.chooseButA8.Location = new System.Drawing.Point(13, 431);
-            this.chooseButA8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA8.Location = new System.Drawing.Point(11, 323);
             this.chooseButA8.Name = "chooseButA8";
-            this.chooseButA8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA8.Size = new System.Drawing.Size(45, 38);
             this.chooseButA8.TabIndex = 160;
             this.chooseButA8.Text = "А8";
             this.chooseButA8.UseVisualStyleBackColor = false;
@@ -1226,10 +1164,9 @@ namespace BattleShip
             // chooseButB8
             // 
             this.chooseButB8.BackColor = System.Drawing.Color.White;
-            this.chooseButB8.Location = new System.Drawing.Point(70, 431);
-            this.chooseButB8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB8.Location = new System.Drawing.Point(61, 323);
             this.chooseButB8.Name = "chooseButB8";
-            this.chooseButB8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB8.Size = new System.Drawing.Size(45, 38);
             this.chooseButB8.TabIndex = 161;
             this.chooseButB8.Text = "Б8";
             this.chooseButB8.UseVisualStyleBackColor = false;
@@ -1238,10 +1175,9 @@ namespace BattleShip
             // chooseButC8
             // 
             this.chooseButC8.BackColor = System.Drawing.Color.White;
-            this.chooseButC8.Location = new System.Drawing.Point(127, 431);
-            this.chooseButC8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC8.Location = new System.Drawing.Point(111, 323);
             this.chooseButC8.Name = "chooseButC8";
-            this.chooseButC8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC8.Size = new System.Drawing.Size(45, 38);
             this.chooseButC8.TabIndex = 162;
             this.chooseButC8.Text = "В8";
             this.chooseButC8.UseVisualStyleBackColor = false;
@@ -1250,10 +1186,9 @@ namespace BattleShip
             // chooseButD8
             // 
             this.chooseButD8.BackColor = System.Drawing.Color.White;
-            this.chooseButD8.Location = new System.Drawing.Point(184, 431);
-            this.chooseButD8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD8.Location = new System.Drawing.Point(161, 323);
             this.chooseButD8.Name = "chooseButD8";
-            this.chooseButD8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD8.Size = new System.Drawing.Size(45, 38);
             this.chooseButD8.TabIndex = 163;
             this.chooseButD8.Text = "Г8";
             this.chooseButD8.UseVisualStyleBackColor = false;
@@ -1262,10 +1197,9 @@ namespace BattleShip
             // chooseButE8
             // 
             this.chooseButE8.BackColor = System.Drawing.Color.White;
-            this.chooseButE8.Location = new System.Drawing.Point(241, 431);
-            this.chooseButE8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE8.Location = new System.Drawing.Point(211, 323);
             this.chooseButE8.Name = "chooseButE8";
-            this.chooseButE8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE8.Size = new System.Drawing.Size(45, 38);
             this.chooseButE8.TabIndex = 164;
             this.chooseButE8.Text = "Д8";
             this.chooseButE8.UseVisualStyleBackColor = false;
@@ -1274,10 +1208,9 @@ namespace BattleShip
             // chooseButF8
             // 
             this.chooseButF8.BackColor = System.Drawing.Color.White;
-            this.chooseButF8.Location = new System.Drawing.Point(296, 431);
-            this.chooseButF8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF8.Location = new System.Drawing.Point(259, 323);
             this.chooseButF8.Name = "chooseButF8";
-            this.chooseButF8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF8.Size = new System.Drawing.Size(45, 38);
             this.chooseButF8.TabIndex = 165;
             this.chooseButF8.Text = "Е8";
             this.chooseButF8.UseVisualStyleBackColor = false;
@@ -1286,10 +1219,9 @@ namespace BattleShip
             // chooseButG8
             // 
             this.chooseButG8.BackColor = System.Drawing.Color.White;
-            this.chooseButG8.Location = new System.Drawing.Point(353, 431);
-            this.chooseButG8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG8.Location = new System.Drawing.Point(309, 323);
             this.chooseButG8.Name = "chooseButG8";
-            this.chooseButG8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG8.Size = new System.Drawing.Size(45, 38);
             this.chooseButG8.TabIndex = 166;
             this.chooseButG8.Text = "Ж8";
             this.chooseButG8.UseVisualStyleBackColor = false;
@@ -1298,10 +1230,9 @@ namespace BattleShip
             // chooseButH8
             // 
             this.chooseButH8.BackColor = System.Drawing.Color.White;
-            this.chooseButH8.Location = new System.Drawing.Point(410, 431);
-            this.chooseButH8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH8.Location = new System.Drawing.Point(359, 323);
             this.chooseButH8.Name = "chooseButH8";
-            this.chooseButH8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH8.Size = new System.Drawing.Size(45, 38);
             this.chooseButH8.TabIndex = 167;
             this.chooseButH8.Text = "З8";
             this.chooseButH8.UseVisualStyleBackColor = false;
@@ -1310,10 +1241,9 @@ namespace BattleShip
             // chooseButI8
             // 
             this.chooseButI8.BackColor = System.Drawing.Color.White;
-            this.chooseButI8.Location = new System.Drawing.Point(467, 431);
-            this.chooseButI8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI8.Location = new System.Drawing.Point(409, 323);
             this.chooseButI8.Name = "chooseButI8";
-            this.chooseButI8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI8.Size = new System.Drawing.Size(45, 38);
             this.chooseButI8.TabIndex = 168;
             this.chooseButI8.Text = "И8";
             this.chooseButI8.UseVisualStyleBackColor = false;
@@ -1322,10 +1252,9 @@ namespace BattleShip
             // chooseButJ8
             // 
             this.chooseButJ8.BackColor = System.Drawing.Color.White;
-            this.chooseButJ8.Location = new System.Drawing.Point(524, 431);
-            this.chooseButJ8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ8.Location = new System.Drawing.Point(458, 323);
             this.chooseButJ8.Name = "chooseButJ8";
-            this.chooseButJ8.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ8.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ8.TabIndex = 169;
             this.chooseButJ8.Text = "К8";
             this.chooseButJ8.UseVisualStyleBackColor = false;
@@ -1334,10 +1263,9 @@ namespace BattleShip
             // chooseButA9
             // 
             this.chooseButA9.BackColor = System.Drawing.Color.White;
-            this.chooseButA9.Location = new System.Drawing.Point(13, 490);
-            this.chooseButA9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA9.Location = new System.Drawing.Point(11, 368);
             this.chooseButA9.Name = "chooseButA9";
-            this.chooseButA9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA9.Size = new System.Drawing.Size(45, 38);
             this.chooseButA9.TabIndex = 170;
             this.chooseButA9.Text = "А9";
             this.chooseButA9.UseVisualStyleBackColor = false;
@@ -1346,10 +1274,9 @@ namespace BattleShip
             // chooseButB9
             // 
             this.chooseButB9.BackColor = System.Drawing.Color.White;
-            this.chooseButB9.Location = new System.Drawing.Point(70, 490);
-            this.chooseButB9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB9.Location = new System.Drawing.Point(61, 368);
             this.chooseButB9.Name = "chooseButB9";
-            this.chooseButB9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB9.Size = new System.Drawing.Size(45, 38);
             this.chooseButB9.TabIndex = 171;
             this.chooseButB9.Text = "Б9";
             this.chooseButB9.UseVisualStyleBackColor = false;
@@ -1358,10 +1285,9 @@ namespace BattleShip
             // chooseButC9
             // 
             this.chooseButC9.BackColor = System.Drawing.Color.White;
-            this.chooseButC9.Location = new System.Drawing.Point(127, 490);
-            this.chooseButC9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC9.Location = new System.Drawing.Point(111, 368);
             this.chooseButC9.Name = "chooseButC9";
-            this.chooseButC9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC9.Size = new System.Drawing.Size(45, 38);
             this.chooseButC9.TabIndex = 172;
             this.chooseButC9.Text = "В9";
             this.chooseButC9.UseVisualStyleBackColor = false;
@@ -1370,10 +1296,9 @@ namespace BattleShip
             // chooseButD9
             // 
             this.chooseButD9.BackColor = System.Drawing.Color.White;
-            this.chooseButD9.Location = new System.Drawing.Point(184, 490);
-            this.chooseButD9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD9.Location = new System.Drawing.Point(161, 368);
             this.chooseButD9.Name = "chooseButD9";
-            this.chooseButD9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD9.Size = new System.Drawing.Size(45, 38);
             this.chooseButD9.TabIndex = 173;
             this.chooseButD9.Text = "Г9";
             this.chooseButD9.UseVisualStyleBackColor = false;
@@ -1382,10 +1307,9 @@ namespace BattleShip
             // chooseButE9
             // 
             this.chooseButE9.BackColor = System.Drawing.Color.White;
-            this.chooseButE9.Location = new System.Drawing.Point(241, 490);
-            this.chooseButE9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE9.Location = new System.Drawing.Point(211, 368);
             this.chooseButE9.Name = "chooseButE9";
-            this.chooseButE9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE9.Size = new System.Drawing.Size(45, 38);
             this.chooseButE9.TabIndex = 174;
             this.chooseButE9.Text = "Д9";
             this.chooseButE9.UseVisualStyleBackColor = false;
@@ -1394,10 +1318,9 @@ namespace BattleShip
             // chooseButF9
             // 
             this.chooseButF9.BackColor = System.Drawing.Color.White;
-            this.chooseButF9.Location = new System.Drawing.Point(296, 490);
-            this.chooseButF9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF9.Location = new System.Drawing.Point(259, 368);
             this.chooseButF9.Name = "chooseButF9";
-            this.chooseButF9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF9.Size = new System.Drawing.Size(45, 38);
             this.chooseButF9.TabIndex = 175;
             this.chooseButF9.Text = "Е9";
             this.chooseButF9.UseVisualStyleBackColor = false;
@@ -1406,10 +1329,9 @@ namespace BattleShip
             // chooseButG9
             // 
             this.chooseButG9.BackColor = System.Drawing.Color.White;
-            this.chooseButG9.Location = new System.Drawing.Point(353, 490);
-            this.chooseButG9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG9.Location = new System.Drawing.Point(309, 368);
             this.chooseButG9.Name = "chooseButG9";
-            this.chooseButG9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG9.Size = new System.Drawing.Size(45, 38);
             this.chooseButG9.TabIndex = 176;
             this.chooseButG9.Text = "Ж9";
             this.chooseButG9.UseVisualStyleBackColor = false;
@@ -1418,10 +1340,9 @@ namespace BattleShip
             // chooseButH9
             // 
             this.chooseButH9.BackColor = System.Drawing.Color.White;
-            this.chooseButH9.Location = new System.Drawing.Point(410, 490);
-            this.chooseButH9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH9.Location = new System.Drawing.Point(359, 368);
             this.chooseButH9.Name = "chooseButH9";
-            this.chooseButH9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH9.Size = new System.Drawing.Size(45, 38);
             this.chooseButH9.TabIndex = 177;
             this.chooseButH9.Text = "З9";
             this.chooseButH9.UseVisualStyleBackColor = false;
@@ -1430,10 +1351,9 @@ namespace BattleShip
             // chooseButI9
             // 
             this.chooseButI9.BackColor = System.Drawing.Color.White;
-            this.chooseButI9.Location = new System.Drawing.Point(467, 490);
-            this.chooseButI9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI9.Location = new System.Drawing.Point(409, 368);
             this.chooseButI9.Name = "chooseButI9";
-            this.chooseButI9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI9.Size = new System.Drawing.Size(45, 38);
             this.chooseButI9.TabIndex = 178;
             this.chooseButI9.Text = "И9";
             this.chooseButI9.UseVisualStyleBackColor = false;
@@ -1442,10 +1362,9 @@ namespace BattleShip
             // chooseButJ9
             // 
             this.chooseButJ9.BackColor = System.Drawing.Color.White;
-            this.chooseButJ9.Location = new System.Drawing.Point(524, 490);
-            this.chooseButJ9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ9.Location = new System.Drawing.Point(458, 368);
             this.chooseButJ9.Name = "chooseButJ9";
-            this.chooseButJ9.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ9.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ9.TabIndex = 179;
             this.chooseButJ9.Text = "К9";
             this.chooseButJ9.UseVisualStyleBackColor = false;
@@ -1454,10 +1373,9 @@ namespace BattleShip
             // chooseButA10
             // 
             this.chooseButA10.BackColor = System.Drawing.Color.White;
-            this.chooseButA10.Location = new System.Drawing.Point(13, 549);
-            this.chooseButA10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButA10.Location = new System.Drawing.Point(11, 412);
             this.chooseButA10.Name = "chooseButA10";
-            this.chooseButA10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButA10.Size = new System.Drawing.Size(45, 38);
             this.chooseButA10.TabIndex = 180;
             this.chooseButA10.Text = "А10";
             this.chooseButA10.UseVisualStyleBackColor = false;
@@ -1466,10 +1384,9 @@ namespace BattleShip
             // chooseButB10
             // 
             this.chooseButB10.BackColor = System.Drawing.Color.White;
-            this.chooseButB10.Location = new System.Drawing.Point(70, 549);
-            this.chooseButB10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButB10.Location = new System.Drawing.Point(61, 412);
             this.chooseButB10.Name = "chooseButB10";
-            this.chooseButB10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButB10.Size = new System.Drawing.Size(45, 38);
             this.chooseButB10.TabIndex = 181;
             this.chooseButB10.Text = "Б10";
             this.chooseButB10.UseVisualStyleBackColor = false;
@@ -1478,10 +1395,9 @@ namespace BattleShip
             // chooseButC10
             // 
             this.chooseButC10.BackColor = System.Drawing.Color.White;
-            this.chooseButC10.Location = new System.Drawing.Point(127, 549);
-            this.chooseButC10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButC10.Location = new System.Drawing.Point(111, 412);
             this.chooseButC10.Name = "chooseButC10";
-            this.chooseButC10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButC10.Size = new System.Drawing.Size(45, 38);
             this.chooseButC10.TabIndex = 182;
             this.chooseButC10.Text = "В10";
             this.chooseButC10.UseVisualStyleBackColor = false;
@@ -1490,10 +1406,9 @@ namespace BattleShip
             // chooseButD10
             // 
             this.chooseButD10.BackColor = System.Drawing.Color.White;
-            this.chooseButD10.Location = new System.Drawing.Point(184, 549);
-            this.chooseButD10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButD10.Location = new System.Drawing.Point(161, 412);
             this.chooseButD10.Name = "chooseButD10";
-            this.chooseButD10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButD10.Size = new System.Drawing.Size(45, 38);
             this.chooseButD10.TabIndex = 183;
             this.chooseButD10.Text = "Г10";
             this.chooseButD10.UseVisualStyleBackColor = false;
@@ -1502,10 +1417,9 @@ namespace BattleShip
             // chooseButE10
             // 
             this.chooseButE10.BackColor = System.Drawing.Color.White;
-            this.chooseButE10.Location = new System.Drawing.Point(241, 549);
-            this.chooseButE10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButE10.Location = new System.Drawing.Point(211, 412);
             this.chooseButE10.Name = "chooseButE10";
-            this.chooseButE10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButE10.Size = new System.Drawing.Size(45, 38);
             this.chooseButE10.TabIndex = 184;
             this.chooseButE10.Text = "Д10";
             this.chooseButE10.UseVisualStyleBackColor = false;
@@ -1514,10 +1428,9 @@ namespace BattleShip
             // chooseButF10
             // 
             this.chooseButF10.BackColor = System.Drawing.Color.White;
-            this.chooseButF10.Location = new System.Drawing.Point(296, 549);
-            this.chooseButF10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButF10.Location = new System.Drawing.Point(259, 412);
             this.chooseButF10.Name = "chooseButF10";
-            this.chooseButF10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButF10.Size = new System.Drawing.Size(45, 38);
             this.chooseButF10.TabIndex = 185;
             this.chooseButF10.Text = "Е10";
             this.chooseButF10.UseVisualStyleBackColor = false;
@@ -1526,10 +1439,9 @@ namespace BattleShip
             // chooseButG10
             // 
             this.chooseButG10.BackColor = System.Drawing.Color.White;
-            this.chooseButG10.Location = new System.Drawing.Point(353, 549);
-            this.chooseButG10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButG10.Location = new System.Drawing.Point(309, 412);
             this.chooseButG10.Name = "chooseButG10";
-            this.chooseButG10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButG10.Size = new System.Drawing.Size(45, 38);
             this.chooseButG10.TabIndex = 186;
             this.chooseButG10.Text = "Ж10";
             this.chooseButG10.UseVisualStyleBackColor = false;
@@ -1538,10 +1450,9 @@ namespace BattleShip
             // chooseButH10
             // 
             this.chooseButH10.BackColor = System.Drawing.Color.White;
-            this.chooseButH10.Location = new System.Drawing.Point(410, 549);
-            this.chooseButH10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButH10.Location = new System.Drawing.Point(359, 412);
             this.chooseButH10.Name = "chooseButH10";
-            this.chooseButH10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButH10.Size = new System.Drawing.Size(45, 38);
             this.chooseButH10.TabIndex = 187;
             this.chooseButH10.Text = "З10";
             this.chooseButH10.UseVisualStyleBackColor = false;
@@ -1550,10 +1461,9 @@ namespace BattleShip
             // chooseButI10
             // 
             this.chooseButI10.BackColor = System.Drawing.Color.White;
-            this.chooseButI10.Location = new System.Drawing.Point(467, 549);
-            this.chooseButI10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButI10.Location = new System.Drawing.Point(409, 412);
             this.chooseButI10.Name = "chooseButI10";
-            this.chooseButI10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButI10.Size = new System.Drawing.Size(45, 38);
             this.chooseButI10.TabIndex = 188;
             this.chooseButI10.Text = "И10";
             this.chooseButI10.UseVisualStyleBackColor = false;
@@ -1562,10 +1472,9 @@ namespace BattleShip
             // chooseButJ10
             // 
             this.chooseButJ10.BackColor = System.Drawing.Color.White;
-            this.chooseButJ10.Location = new System.Drawing.Point(524, 549);
-            this.chooseButJ10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chooseButJ10.Location = new System.Drawing.Point(458, 412);
             this.chooseButJ10.Name = "chooseButJ10";
-            this.chooseButJ10.Size = new System.Drawing.Size(51, 51);
+            this.chooseButJ10.Size = new System.Drawing.Size(45, 38);
             this.chooseButJ10.TabIndex = 189;
             this.chooseButJ10.Text = "К10";
             this.chooseButJ10.UseVisualStyleBackColor = false;
@@ -1573,15 +1482,14 @@ namespace BattleShip
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1524, 923);
+            this.ClientSize = new System.Drawing.Size(1384, 861);
             this.Controls.Add(this.GameButs);
             this.Controls.Add(this.Actions);
             this.Controls.Add(this.BattleField);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1542, 970);
+            this.MinimumSize = new System.Drawing.Size(1400, 900);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Click += new System.EventHandler(this.GameButClick);

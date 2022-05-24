@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BattleShip
@@ -62,7 +63,7 @@ namespace BattleShip
                     bot = null;
                     break;
                 case 2:
-                    bot = new BOT(playerShips, playerField);
+                    bot = new BOT(playerShips);
                     while (CheckField(enemyField, SHIP_CELL) != 20)
                         BOT_Field.FieldAutoInit("BOT");
                     break;
@@ -151,7 +152,8 @@ namespace BattleShip
             {
                 case SHIP_CELL:
                     playerField[enemyStep.Y, enemyStep.X] = HIT_CELL;
-                    DrawController.DrawField(BattleField, field, playerField);
+                    Task.Delay(10000);
+                    DrawController.DrawField(BattleField, field, playerField); 
                     BotStep();
                     break;
                 case EMPTY_CELL:
@@ -180,7 +182,7 @@ namespace BattleShip
                     bot = null;
                     break;
                 case 2:
-                    bot = new BOT(playerShips, playerField);
+                    bot = new BOT(playerShips);
                     while (CheckField(enemyField, SHIP_CELL) != 20)
                         BOT_Field.FieldAutoInit("BOT");
                     break;
