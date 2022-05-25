@@ -119,7 +119,8 @@ namespace BattleShip.bot
 
             for (int i = 0; i < points.Count; i++)
             {
-                if (field[points[i].Y, points[i].X] == MainForm.MISS_CELL)
+                if (field[points[i].Y, points[i].X] == MainForm.MISS_CELL ||
+                    field[points[i].Y, points[i].X] == MainForm.FLAG)
                     points.RemoveAt(i);
             }
 
@@ -140,8 +141,62 @@ namespace BattleShip.bot
             {
                 step = new Point(rnd.Next(0, 10), rnd.Next(0, 10));
             } while (field[step.Y, step.X] == MainForm.HIT_CELL ||
-            field[step.Y, step.X] == MainForm.MISS_CELL);
+            field[step.Y, step.X] == MainForm.MISS_CELL ||
+            field[step.Y, step.X] == MainForm.FLAG);
             return step;
+        }
+
+        private string CheckRotation(ref List<Point> points)
+        {
+            if (points.Count < 2) return "";
+            else
+            {
+                if (points[points.Count - 1].Y == points[points.Count - 2].Y)
+                    return "horizontal";
+                else return "vertical";
+            }
+        }
+
+        private void DesignateFlags(Ship ship)
+        {
+            Point shipPoint;
+            List<Point> tempPoints = new List<Point>();
+            List<Point> deletePoints = new List<Point>();
+            for (int i = 0; i < ship.points.Count; i++)
+            {
+                shipPoint = ship.points[i];
+                tempPoints.Add(new Point(shipPoint.X, shipPoint.Y - 1));
+                tempPoints.Add(new Point(shipPoint.X + 1, shipPoint.Y - 1));
+                tempPoints.Add(new Point(shipPoint.X + 1, shipPoint.Y));
+                tempPoints.Add(new Point(shipPoint.X + 1, shipPoint.Y + 1));
+                tempPoints.Add(new Point(shipPoint.X, shipPoint.Y + 1));
+                tempPoints.Add(new Point(shipPoint.X - 1, shipPoint.Y + 1));
+                tempPoints.Add(new Point(shipPoint.X - 1, shipPoint.Y));
+                tempPoints.Add(new Point(shipPoint.X - 1, shipPoint.Y - 1));
+            }
+
+            for (int j = 0; j < tempPoints.Count; j++)
+            {
+                if (tempPoints[j].X > 9 || tempPoints[j].Y > 9 || tempPoints[j].X < 0 || tempPoints[j].Y < 0)
+                {
+                    deletePoints.Add(tempPoints[j]);
+                }
+            }
+
+            for (int j = 0; j < deletePoints.Count; j++)
+            {
+                tempPoints.Remove(deletePoints[j]);
+            }
+
+            for (int i = 0; i < tempPoints.Count; i++)
+            {
+                if (field[tempPoints[i].Y, tempPoints[i].X] != MainForm.SHIP_CELL &&
+                    field[tempPoints[i].Y, tempPoints[i].X] != MainForm.HIT_CELL &&
+                    field[tempPoints[i].Y, tempPoints[i].X] != MainForm.MISS_CELL)
+                {
+                    field[tempPoints[i].Y, tempPoints[i].X] = MainForm.FLAG;
+                }
+            }
         }
 
         public Point Step()
@@ -174,6 +229,7 @@ namespace BattleShip.bot
                 {
                     wreckedShipIsExist = false;
                     missSteps = searchShip = 0;
+                    DesignateFlags(wreckedShip);
                     wreckedShipPoints.Clear();
                     steps.Clear();
                     step = ChooseStep();
@@ -189,6 +245,7 @@ namespace BattleShip.bot
                     }
                     else
                     {
+                        if (!isHit) changeRotation = true;
                         Point firstPoint = wreckedShipPoints[0];
                         Point lastPoint = wreckedShipPoints[wreckedShipPoints.Count - 1];
                         switch (wreckedShip.Orientation)
@@ -198,7 +255,7 @@ namespace BattleShip.bot
                                 {
                                     step = new Point(lastPoint.X + 1, lastPoint.Y);
                                 }
-                                else if(lastPoint.X - firstPoint.X < 0 && isHit)
+                                else if (lastPoint.X - firstPoint.X < 0 && isHit && lastPoint.X > 0)
                                 {
                                     step = new Point(lastPoint.X - 1, lastPoint.Y);
                                 }
@@ -212,11 +269,7 @@ namespace BattleShip.bot
                                 {
                                     step = new Point(lastPoint.X, lastPoint.Y + 1);
                                 }
-                                //else if (lastPoint.Y - firstPoint.Y == -1)
-                                //{
-                                //    step = new Point(firstPoint.X, firstPoint.Y - 1);
-                                //}
-                                else if(lastPoint.Y - firstPoint.Y < 0 && isHit)
+                                else if (lastPoint.Y - firstPoint.Y < 0 && isHit && lastPoint.Y > 0)
                                 {
                                     step = new Point(lastPoint.X, lastPoint.Y - 1);
                                 }
@@ -240,4 +293,6 @@ namespace BattleShip.bot
             return step;
         }
     }
+
+
 }

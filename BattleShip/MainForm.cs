@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BattleShip.GameModes;
 
 namespace BattleShip
 {
@@ -13,6 +14,7 @@ namespace BattleShip
         public const int SHIP_CELL = 1;
         public const int MISS_CELL = 2;
         public const int HIT_CELL = 3;
+        public const int FLAG = 4;
 
         MainForm form;
 
@@ -21,10 +23,11 @@ namespace BattleShip
         private Dictionary<char, int> keys;
         private static List<Ship> playerShips;
         private bool startGameAllow, isHit;
-
+        private MainForm mainForm;
         private static int scale;
         private static int[,] playerField;
         private static int[,] enemyField;
+        public Game game;
 
         private int GameMode = 0;
 
@@ -45,9 +48,12 @@ namespace BattleShip
             DrawController.FieldInitialize(ref BattleField, 10);
         }
 
-        public MainForm(int mode, ref int[,] _enemyField)
+        public MainForm(ref int[,] _enemyField)
         {
             InitializeComponent();
+            form = this;
+            panel1.Visible = false;
+            GameMode = 3;
             field = new Bitmap(BattleField.Width, BattleField.Height);
             BattleField.Image = field;
             isHit = false;
@@ -57,17 +63,6 @@ namespace BattleShip
             keys = new Dictionary<char, int>();
             scale = BattleField.Width / 10;
             StartGameBut.Enabled = false;
-            switch(mode)
-            {
-                case 1:
-                    bot = null;
-                    break;
-                case 2:
-                    bot = new BOT(playerShips);
-                    while (CheckField(enemyField, SHIP_CELL) != 20)
-                        BOT_Field.FieldAutoInit("BOT");
-                    break;
-            }
             DictionaryStuff();
             DrawController.FieldInitialize(ref BattleField, 10);
         }
@@ -85,10 +80,17 @@ namespace BattleShip
             enemyField = field;
         }
 
+        public void GetSecondPlayerField(int[,] field)
+        {
+            enemyField = field;
+        }
+
         public int[,] SendField()
         {
             return playerField;
         }
+
+        public int[,] GetField() => playerField;
 
         private void DictionaryStuff()
         {
@@ -180,11 +182,18 @@ namespace BattleShip
             {
                 case 1:
                     bot = null;
+                    mainForm = new MainForm(ref playerField);
+                    mainForm.Show();
                     break;
                 case 2:
                     bot = new BOT(playerShips);
                     while (CheckField(enemyField, SHIP_CELL) != 20)
                         BOT_Field.FieldAutoInit("BOT");
+                    break;
+                case 3:
+                    form.GetSecondPlayerField(playerField);
+                    int[,] firstPlayerField = form.GetField();
+                    form.game = game = new Game(ref firstPlayerField, ref playerField);
                     break;
             }
         }
