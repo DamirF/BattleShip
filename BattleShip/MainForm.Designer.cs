@@ -143,18 +143,10 @@ namespace BattleShip
             this.chooseButI10 = new System.Windows.Forms.Button();
             this.chooseButJ10 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Adress = new System.Windows.Forms.TextBox();
-            this.portConnection = new System.Windows.Forms.TextBox();
-            this.portListener = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).BeginInit();
             this.Actions.SuspendLayout();
             this.panel1.SuspendLayout();
             this.GameButs.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // BattleField
@@ -1488,76 +1480,12 @@ namespace BattleShip
             this.chooseButJ10.UseVisualStyleBackColor = false;
             this.chooseButJ10.Click += new System.EventHandler(this.GameButClick);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.Adress);
-            this.groupBox1.Controls.Add(this.portConnection);
-            this.groupBox1.Controls.Add(this.portListener);
-            this.groupBox1.Location = new System.Drawing.Point(843, 703);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(520, 110);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Адрес";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Порт для подключения";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Порт для прослушивания";
-            // 
-            // Adress
-            // 
-            this.Adress.Location = new System.Drawing.Point(172, 81);
-            this.Adress.Name = "Adress";
-            this.Adress.Size = new System.Drawing.Size(243, 23);
-            this.Adress.TabIndex = 2;
-            this.Adress.Text = "127.0.0.1";
-            // 
-            // portConnection
-            // 
-            this.portConnection.Location = new System.Drawing.Point(172, 52);
-            this.portConnection.Name = "portConnection";
-            this.portConnection.Size = new System.Drawing.Size(243, 23);
-            this.portConnection.TabIndex = 1;
-            // 
-            // portListener
-            // 
-            this.portListener.Location = new System.Drawing.Point(172, 22);
-            this.portListener.Name = "portListener";
-            this.portListener.Size = new System.Drawing.Size(243, 23);
-            this.portListener.TabIndex = 0;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1384, 861);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.GameButs);
             this.Controls.Add(this.Actions);
             this.Controls.Add(this.BattleField);
@@ -1570,8 +1498,6 @@ namespace BattleShip
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.GameButs.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1691,13 +1617,6 @@ namespace BattleShip
         private System.Windows.Forms.Label GM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox Adress;
-        private System.Windows.Forms.TextBox portConnection;
-        private System.Windows.Forms.TextBox portListener;
     }
 }
 

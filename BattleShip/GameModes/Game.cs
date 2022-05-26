@@ -36,8 +36,7 @@ namespace BattleShip.GameModes
 
         public static void StartGame()
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();
+
         }
 
         public bool PlayerOneStep(Point playerOneStep, Point playerTwoStep)

@@ -19,6 +19,10 @@ namespace BattleShip
         public const int MISS_CELL = 2;
         public const int HIT_CELL = 3;
         public const int FLAG = 4;
+        public const int LOCALPORT = 8001;
+        public const int REMOTEPORT = 8001;
+        public const int TTL = 20;
+        public const string HOST = "235.5.5.1";
 
         public BOT bot;
         private Bitmap field;
@@ -28,9 +32,10 @@ namespace BattleShip
         private static int scale;
         private static int[,] playerField;
         private static int[,] enemyField;
-        private static UdpClient udpClient, udpClient1;
+        private static UdpClient udpClient;
         private Point ReceivePoint, StepPoint;
         private int stepCondition, receiveStepCondition;
+        private IPAddress groupAddress;
 
         private int GameMode = 0;
 
@@ -49,6 +54,7 @@ namespace BattleShip
             StartGameBut.Enabled = false;
             DictionaryStuff();
             DrawController.FieldInitialize(ref BattleField, 10);
+            groupAddress = IPAddress.Parse(HOST);
         }
 
         public static List<Ship> GetShips => playerShips;
@@ -135,7 +141,7 @@ namespace BattleShip
                                 stepCondition = 1;
                                 string stepConditionString = stepCondition.ToString();
                                 byte[] bytes = Encoding.UTF8.GetBytes(stepConditionString);
-                                udpClient.Send(bytes, bytes.Length);
+                                udpClient.Send(bytes, bytes.Length, HOST, REMOTEPORT);
                             }
                             else
                             {
@@ -143,7 +149,7 @@ namespace BattleShip
                                 stepCondition = 0;
                                 string stepConditionString = stepCondition.ToString();
                                 byte[] bytes = Encoding.UTF8.GetBytes(stepConditionString);
-                                udpClient.Send(bytes, bytes.Length);
+                                udpClient.Send(bytes, bytes.Length, HOST, REMOTEPORT);
                             }
                             if (receiveConditionStep == 0)
                             {
@@ -214,8 +220,8 @@ namespace BattleShip
             {
                 case 1:
                     bot = null;
-                    udpClient = new UdpClient();
-                    udpClient1 = new UdpClient(Convert.ToInt32(portListener.Text));
+                    udpClient = new UdpClient(LOCALPORT);
+                    udpClient.JoinMulticastGroup(groupAddress, TTL);
                     break;
                 case 2:
                     bot = new BOT(playerShips);
@@ -304,7 +310,7 @@ namespace BattleShip
             {
                 string message = StepPoint.ToString();
                 byte[] data = Encoding.Unicode.GetBytes(message);
-                udpClient.Send(data, data.Length, Adress.Text, Convert.ToInt32(portConnection.Text)); // отправка
+                udpClient.Send(data, data.Length, HOST, REMOTEPORT); // отправка
             }
             catch (Exception ex)
             {
@@ -318,13 +324,12 @@ namespace BattleShip
 
         private void receivePoint()
         {
-            udpClient1 = new UdpClient(Convert.ToInt32(portListener.Text)); // UdpClient для получения данных
             IPEndPoint remoteIp = null; // адрес входящего подключения
             try
             {
                 while (true)
                 {
-                    byte[] data = udpClient1.Receive(ref remoteIp); // получаем данные
+                    byte[] data = udpClient.Receive(ref remoteIp); // получаем данные
                     string message = Encoding.Unicode.GetString(data);
                     string newmessage = "";
                     for (int i = 0; i < message.Length; i++)
@@ -345,7 +350,7 @@ namespace BattleShip
             }
             finally
             {
-                udpClient1.Close();
+                udpClient.Close();
             }
         }
 
@@ -356,7 +361,7 @@ namespace BattleShip
             {
                 while (true)
                 {
-                    byte[] data = udpClient1.Receive(ref remoteIp); // получаем данные
+                    byte[] data = udpClient.Receive(ref remoteIp); // получаем данные
                     string message = Encoding.Unicode.GetString(data);
                     receiveStepCondition = Convert.ToInt32(message);
                 }
@@ -368,7 +373,7 @@ namespace BattleShip
             }
             finally
             {
-                udpClient1.Close();
+                udpClient.Close();
             }
         }
     }
