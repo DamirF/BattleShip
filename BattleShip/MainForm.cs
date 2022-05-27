@@ -19,8 +19,7 @@ namespace BattleShip
         public const int MISS_CELL = 2;
         public const int HIT_CELL = 3;
         public const int FLAG = 4;
-        public const int LOCALPORT = 8001;
-        public const int REMOTEPORT = 8001;
+        public int LOCALPORT, REMOTEPORT;
         public const int TTL = 20;
         public const string HOST = "235.5.5.1";
 
@@ -220,6 +219,8 @@ namespace BattleShip
             {
                 case 1:
                     bot = null;
+                    LOCALPORT = Convert.ToInt32(portLocal.Text);
+                    REMOTEPORT = Convert.ToInt32(portRemote.Text);
                     udpClient = new UdpClient(LOCALPORT);
                     udpClient.JoinMulticastGroup(groupAddress, TTL);
                     break;

@@ -143,6 +143,8 @@ namespace BattleShip
             this.chooseButI10 = new System.Windows.Forms.Button();
             this.chooseButJ10 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.portLocal = new System.Windows.Forms.TextBox();
+            this.portRemote = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).BeginInit();
             this.Actions.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1480,12 +1482,28 @@ namespace BattleShip
             this.chooseButJ10.UseVisualStyleBackColor = false;
             this.chooseButJ10.Click += new System.EventHandler(this.GameButClick);
             // 
+            // portLocal
+            // 
+            this.portLocal.Location = new System.Drawing.Point(843, 727);
+            this.portLocal.Name = "portLocal";
+            this.portLocal.Size = new System.Drawing.Size(100, 23);
+            this.portLocal.TabIndex = 4;
+            // 
+            // portRemote
+            // 
+            this.portRemote.Location = new System.Drawing.Point(843, 775);
+            this.portRemote.Name = "portRemote";
+            this.portRemote.Size = new System.Drawing.Size(100, 23);
+            this.portRemote.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1384, 861);
+            this.Controls.Add(this.portRemote);
+            this.Controls.Add(this.portLocal);
             this.Controls.Add(this.GameButs);
             this.Controls.Add(this.Actions);
             this.Controls.Add(this.BattleField);
@@ -1499,6 +1517,7 @@ namespace BattleShip
             this.panel1.PerformLayout();
             this.GameButs.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1617,6 +1636,8 @@ namespace BattleShip
         private System.Windows.Forms.Label GM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox portLocal;
+        private System.Windows.Forms.TextBox portRemote;
     }
 }
 
