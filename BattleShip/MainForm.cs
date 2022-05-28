@@ -34,8 +34,9 @@ namespace BattleShip
 
         SimpleTcpClient client;
         private Point receivePoint;
-        private int receiveCondition, sendCondition, moveCount = 0;
-        private bool isReceived;
+        private int receiveCondition, sendCondition, hitCount;
+        private string nameBut = "";
+        private bool isReceived = false;
 
         public MainForm()
         {
@@ -109,11 +110,17 @@ namespace BattleShip
         private void GameButClick(object sender, EventArgs e)
         {
             if (!startGameAllow || !isHit) return;
+            if (hitCount == 20)
+            {
+                MessageBox.Show("Win!");
+                GameButs.Enabled = false;
+            }
             Point step;
 
             if(((Button)sender).BackColor.ToArgb() == Color.White.ToArgb())
             {
                 step = PlayerStep(((Button)sender).Name);
+                nameBut = ((Button)sender).Name;
                 switch (GameMode)
                 {
                     case 1:
@@ -124,16 +131,7 @@ namespace BattleShip
                                 if (!string.IsNullOrEmpty(step.ToString()))
                                 {
                                     client.Send(step.ToString());
-                                    moveCount++;
                                 }
-                            }
-                            if (receiveCondition == 1)
-                            {
-                                ((Button)sender).BackColor = Color.LightGreen;
-                            }
-                            else if (receiveCondition == 0)
-                            {
-                                ((Button)sender).BackColor = Color.DarkGray;
                             }
                         }
                         catch (Exception ex)
@@ -203,7 +201,6 @@ namespace BattleShip
                     try
                     {
                         client.Connect();
-                        Host.Text = client.ServerIpPort;
                     }
                     catch (Exception ex)
                     {
@@ -290,12 +287,26 @@ namespace BattleShip
             this.Invoke((MethodInvoker)delegate
             {
                 string receiveMes = Encoding.UTF8.GetString(e.Data);
-                if (receiveMes.Length == 1)
+                GameButs.Enabled = true;
+                if (receiveMes == "0" || receiveMes == "1")
                 {
                     receiveCondition = int.Parse(receiveMes);
                     isReceived = true;
+                    if (isReceived)
+                    {
+                        if (receiveCondition == 1)
+                        {
+                            GameButs.Controls[nameBut].BackColor = Color.LightGreen;
+                            GameButs.Enabled = true;
+                        }
+                        else if (receiveCondition == 0)
+                        {
+                            GameButs.Controls[nameBut].BackColor = Color.DarkGray;
+                            GameButs.Enabled = false;
+                        }
+                    }
                 }
-                else
+                else if(receiveMes.Length != 1 && receiveMes != "+")
                 {
                     GameButs.Enabled = true;
                     isReceived = false;
@@ -310,34 +321,33 @@ namespace BattleShip
                     receivePoint = new Point(Convert.ToInt32(Char.GetNumericValue(receiveMes1[0])), Convert.ToInt32(Char.GetNumericValue(receiveMes1[1])));
                     if (playerField[receivePoint.Y, receivePoint.X] == SHIP_CELL)
                     {
-                        GameButs.Enabled = true;
                         playerField[receivePoint.Y, receivePoint.X] = HIT_CELL;
+                        hitCount++;
                         sendCondition = 1;
-                        if (CheckField(playerField, HIT_CELL) == 20) MessageBox.Show("Win!");
                         client.Send(sendCondition.ToString());
+                        if (CheckField(playerField, HIT_CELL) == 20)
+                        {
+                            MessageBox.Show("Lose...");
+                            GameButs.Enabled = false;
+                        }
                     }
                     else
                     {
-                        GameButs.Enabled = false;
                         playerField[receivePoint.Y, receivePoint.X] = MISS_CELL;
                         sendCondition = 0;
                         client.Send(sendCondition.ToString());
                     }
                     DrawController.DrawField(BattleField, field, playerField);
                 }
+                if(receiveMes == "+")
+                {
+                    GameButs.Enabled = true;
+                }
+                else if(receiveMes == "-")
+                {
+                    GameButs.Enabled = false;
+                }
             });
         }
-
-        //public void PlayerOneStep(Point playerOneStep, Point playerTwoStep)
-        //{
-        //    sendPoint();
-        //    Thread receiveThread = new Thread(new ThreadStart(receivePoint));
-        //    receiveThread.Start();
-        //    playerTwoStep = ReceivePoint;
-        //    if (playerField[playerTwoStep.Y, playerTwoStep.X] == MainForm.SHIP_CELL)
-        //    {
-        //        playerField[playerTwoStep.Y, playerTwoStep.X] = MainForm.HIT_CELL;
-        //    }
-        //}
     }
 }

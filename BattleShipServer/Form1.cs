@@ -19,6 +19,8 @@ namespace BattleShipServer
         }
 
         SimpleTcpServer server;
+        Random random = new Random();
+        private int selectClient;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -40,6 +42,26 @@ namespace BattleShipServer
              this.Invoke((MethodInvoker)delegate
              {
                  Clients.Items.Add(e.IpPort);
+                 if (Clients.Items.Count > 2)
+                 {
+                     server.DisconnectClient(e.IpPort);
+                     Clients.Items.RemoveAt(2);
+                 }
+                 if (Clients.Items.Count == 2)
+                 {
+                     selectClient = random.Next(0, 2);
+                     server.Send(Clients.Items[selectClient].ToString(), "+");
+                     if(selectClient == 0)
+                     {
+                         selectClient++;
+                         server.Send(Clients.Items[selectClient].ToString(), "-");
+                     }
+                     else if(selectClient == 1)
+                     {
+                         selectClient--;
+                         server.Send(Clients.Items[selectClient].ToString(), "-");
+                     }
+                 }
              });
         }
 
@@ -47,13 +69,16 @@ namespace BattleShipServer
         {
             this.Invoke((MethodInvoker)delegate
             {
-                if(e.IpPort == Clients.Items[0].ToString())
+                if(Clients.Items.Count == 2)
                 {
-                    server.Send(Clients.Items[1].ToString(), e.Data);
-                }   
-                else if(e.IpPort == Clients.Items[1].ToString())
-                {
-                    server.Send(Clients.Items[0].ToString(), e.Data);
+                    if (e.IpPort == Clients.Items[0].ToString())
+                    {
+                        server.Send(Clients.Items[1].ToString(), e.Data);
+                    }
+                    else if (e.IpPort == Clients.Items[1].ToString())
+                    {
+                        server.Send(Clients.Items[0].ToString(), e.Data);
+                    }
                 }
             });
         }
