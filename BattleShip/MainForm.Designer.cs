@@ -143,8 +143,7 @@ namespace BattleShip
             this.chooseButI10 = new System.Windows.Forms.Button();
             this.chooseButJ10 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.portLocal = new System.Windows.Forms.TextBox();
-            this.portRemote = new System.Windows.Forms.TextBox();
+            this.Host = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).BeginInit();
             this.Actions.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -1482,19 +1481,13 @@ namespace BattleShip
             this.chooseButJ10.UseVisualStyleBackColor = false;
             this.chooseButJ10.Click += new System.EventHandler(this.GameButClick);
             // 
-            // portLocal
+            // Host
             // 
-            this.portLocal.Location = new System.Drawing.Point(843, 727);
-            this.portLocal.Name = "portLocal";
-            this.portLocal.Size = new System.Drawing.Size(100, 23);
-            this.portLocal.TabIndex = 4;
-            // 
-            // portRemote
-            // 
-            this.portRemote.Location = new System.Drawing.Point(843, 775);
-            this.portRemote.Name = "portRemote";
-            this.portRemote.Size = new System.Drawing.Size(100, 23);
-            this.portRemote.TabIndex = 5;
+            this.Host.Location = new System.Drawing.Point(843, 727);
+            this.Host.Name = "Host";
+            this.Host.Size = new System.Drawing.Size(106, 23);
+            this.Host.TabIndex = 4;
+            this.Host.Text = "127.0.0.1:8910";
             // 
             // MainForm
             // 
@@ -1502,14 +1495,14 @@ namespace BattleShip
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1384, 861);
-            this.Controls.Add(this.portRemote);
-            this.Controls.Add(this.portLocal);
+            this.Controls.Add(this.Host);
             this.Controls.Add(this.GameButs);
             this.Controls.Add(this.Actions);
             this.Controls.Add(this.BattleField);
             this.MinimumSize = new System.Drawing.Size(1400, 900);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Click += new System.EventHandler(this.GameButClick);
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).EndInit();
             this.Actions.ResumeLayout(false);
@@ -1636,8 +1629,7 @@ namespace BattleShip
         private System.Windows.Forms.Label GM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.TextBox portLocal;
-        private System.Windows.Forms.TextBox portRemote;
+        private System.Windows.Forms.TextBox Host;
     }
 }
 

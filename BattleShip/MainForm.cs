@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Net;
 using System.Threading;
+using SuperSimpleTcp;
 
 namespace BattleShip
 {
@@ -19,9 +20,6 @@ namespace BattleShip
         public const int MISS_CELL = 2;
         public const int HIT_CELL = 3;
         public const int FLAG = 4;
-        public int LOCALPORT, REMOTEPORT;
-        public const int TTL = 20;
-        public const string HOST = "235.5.5.1";
 
         public BOT bot;
         private Bitmap field;
@@ -31,12 +29,13 @@ namespace BattleShip
         private static int scale;
         private static int[,] playerField;
         private static int[,] enemyField;
-        private static UdpClient udpClient;
-        private Point ReceivePoint, StepPoint;
-        private int stepCondition, receiveStepCondition;
-        private IPAddress groupAddress;
 
         private int GameMode = 0;
+
+        SimpleTcpClient client;
+        private Point receivePoint;
+        private int receiveCondition;
+        private bool isReceived = false;
 
 
         public MainForm()
@@ -53,7 +52,6 @@ namespace BattleShip
             StartGameBut.Enabled = false;
             DictionaryStuff();
             DrawController.FieldInitialize(ref BattleField, 10);
-            groupAddress = IPAddress.Parse(HOST);
         }
 
         public static List<Ship> GetShips => playerShips;
@@ -112,54 +110,37 @@ namespace BattleShip
         private void GameButClick(object sender, EventArgs e)
         {
             if (!startGameAllow || !isHit) return;
-            Point step, receiveStep;
-            int receiveConditionStep;
+            Point step;
 
             if(((Button)sender).BackColor.ToArgb() == Color.White.ToArgb())
             {
                 step = PlayerStep(((Button)sender).Name);
-                StepPoint = PlayerStep(((Button)sender).Name);
                 switch (GameMode)
                 {
                     case 1:
                         try
                         {
-                            GameButs.Enabled = true;
-                            Thread receiveThread = new Thread(new ThreadStart(receivePoint));
-                            Thread receiveThread1 = new Thread(new ThreadStart(receiveCondition));
-                            //Thread sendPoint1 = new Thread(new ThreadStart(sendPoint));
-                            //sendPoint1.Start();
-                            receiveThread.Start();
-                            receiveThread1.Start();
-                            sendPoint();
-                            receiveStep = ReceivePoint;
-                            receiveConditionStep = receiveStepCondition;
-                            if (playerField[receiveStep.Y, receiveStep.X] == MainForm.SHIP_CELL)
+                            if (client.IsConnected)
                             {
-                                playerField[receiveStep.Y, receiveStep.X] = MainForm.HIT_CELL;
-                                stepCondition = 1;
-                                string stepConditionString = stepCondition.ToString();
-                                byte[] bytes = Encoding.UTF8.GetBytes(stepConditionString);
-                                udpClient.Send(bytes, bytes.Length, HOST, REMOTEPORT);
-                            }
-                            else
-                            {
-                                playerField[receiveStep.Y, receiveStep.X] = MainForm.MISS_CELL;
-                                stepCondition = 0;
-                                string stepConditionString = stepCondition.ToString();
-                                byte[] bytes = Encoding.UTF8.GetBytes(stepConditionString);
-                                udpClient.Send(bytes, bytes.Length, HOST, REMOTEPORT);
-                            }
-                            if (receiveConditionStep == 0)
-                            {
-                                GameButs.Enabled = false;
-                            }
-                            else
-                            {
-                                GameButs.Enabled = true;
+                                if (!string.IsNullOrEmpty(step.ToString()))
+                                {
+                                    client.Send(step.ToString());
+                                }
+                                if (isReceived)
+                                {
+                                    if (receiveCondition == 1)
+                                    {
+                                        ((Button)sender).BackColor = Color.LightGreen;
+                                    }
+                                    else
+                                    {
+                                        ((Button)sender).BackColor = Color.DarkGray;
+                                        GameButs.Enabled = false;
+                                    }
+                                }
                             }
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }
@@ -219,10 +200,15 @@ namespace BattleShip
             {
                 case 1:
                     bot = null;
-                    LOCALPORT = Convert.ToInt32(portLocal.Text);
-                    REMOTEPORT = Convert.ToInt32(portRemote.Text);
-                    udpClient = new UdpClient(LOCALPORT);
-                    udpClient.JoinMulticastGroup(groupAddress, TTL);
+                    try
+                    {
+                        client.Connect();
+                        Host.Text = client.ServerIpPort;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     break;
                 case 2:
                     bot = new BOT(playerShips);
@@ -293,89 +279,61 @@ namespace BattleShip
             DrawController.DrawField(BattleField, field, playerField);
         }
 
-        public void PlayerOneStep(Point playerOneStep, Point playerTwoStep)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            sendPoint();
-            Thread receiveThread = new Thread(new ThreadStart(receivePoint));
-            receiveThread.Start();
-            playerTwoStep = ReceivePoint;
-            if (playerField[playerTwoStep.Y, playerTwoStep.X] == MainForm.SHIP_CELL)
-            {
-                playerField[playerTwoStep.Y, playerTwoStep.X] = MainForm.HIT_CELL;
-            }
+            client = new SimpleTcpClient(Host.Text);
+            client.Events.DataReceived += Events_DataReceived; ;
         }
 
-        private void sendPoint()
+        private void Events_DataReceived(object sender, DataReceivedEventArgs e)
         {
-            try
+            this.Invoke((MethodInvoker)delegate
             {
-                string message = StepPoint.ToString();
-                byte[] data = Encoding.Unicode.GetBytes(message);
-                udpClient.Send(data, data.Length, HOST, REMOTEPORT); // отправка
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                udpClient.Close();
-            }
-        }
-
-        private void receivePoint()
-        {
-            IPEndPoint remoteIp = null; // адрес входящего подключения
-            try
-            {
-                while (true)
+                string receiveMes = Encoding.UTF8.GetString(e.Data);
+                if (receiveMes.Length == 1)
                 {
-                    byte[] data = udpClient.Receive(ref remoteIp); // получаем данные
-                    string message = Encoding.Unicode.GetString(data);
-                    string newmessage = "";
-                    for (int i = 0; i < message.Length; i++)
+                    receiveCondition = int.Parse(receiveMes);
+                    isReceived = true;
+                }
+                else
+                {
+                    GameButs.Enabled = true;
+                    string receiveMes1 = "";
+                    for (int i = 0; i < receiveMes.Length; i++)
                     {
-                        if (message[i] >= 48 && message[i] <= 57)
+                        if (receiveMes[i] >= 48 && receiveMes[i] <= 57)
                         {
-                            newmessage += message[i];
+                            receiveMes1 += receiveMes[i];
                         }
                     }
-
-                    ReceivePoint = new Point(Convert.ToInt32(Char.GetNumericValue(newmessage[0])), Convert.ToInt32(Char.GetNumericValue(newmessage[1])));
+                    receivePoint = new Point(Convert.ToInt32(Char.GetNumericValue(receiveMes1[0])), Convert.ToInt32(Char.GetNumericValue(receiveMes1[1])));
+                    if (playerField[receivePoint.Y, receivePoint.X] == SHIP_CELL)
+                    {
+                        playerField[receivePoint.Y, receivePoint.X] = HIT_CELL;
+                        receiveCondition = 1;
+                        client.Send(receiveCondition.ToString());
+                    }
+                    else
+                    {
+                        playerField[receivePoint.Y, receivePoint.X] = MISS_CELL;
+                        receiveCondition = 0;
+                        client.Send(receiveCondition.ToString());
+                    }
+                    DrawController.DrawField(BattleField, field, playerField);
                 }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                udpClient.Close();
-            }
+            });
         }
 
-        private void receiveCondition()
-        {
-            IPEndPoint remoteIp = null; // адрес входящего подключения
-            try
-            {
-                while (true)
-                {
-                    byte[] data = udpClient.Receive(ref remoteIp); // получаем данные
-                    string message = Encoding.Unicode.GetString(data);
-                    receiveStepCondition = Convert.ToInt32(message);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                udpClient.Close();
-            }
-        }
+        //public void PlayerOneStep(Point playerOneStep, Point playerTwoStep)
+        //{
+        //    sendPoint();
+        //    Thread receiveThread = new Thread(new ThreadStart(receivePoint));
+        //    receiveThread.Start();
+        //    playerTwoStep = ReceivePoint;
+        //    if (playerField[playerTwoStep.Y, playerTwoStep.X] == MainForm.SHIP_CELL)
+        //    {
+        //        playerField[playerTwoStep.Y, playerTwoStep.X] = MainForm.HIT_CELL;
+        //    }
+        //}
     }
 }

@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj": {}
+  },
+  "projects": {
+    "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
+        "projectName": "BattleShipServer",
+        "projectPath": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
+        "packagesPath": "C:\\Users\\bulat\\.nuget\\packages\\",
+        "outputPath": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\bulat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "SuperSimpleTcp": {
+              "target": "Package",
+              "version": "[2.6.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

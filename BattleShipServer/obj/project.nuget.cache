@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XRHgABw4BAwoVIUXpQXjPu/47n7FqS8PjHPjkJMZhc5J2Wapge+Yz4biDmIAv/u3X6XnX71aP05b9KyPE0au4w==",
+  "success": true,
+  "projectFilePath": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bulat\\.nuget\\packages\\supersimpletcp\\2.6.0.8\\supersimpletcp.2.6.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
