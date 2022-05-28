@@ -34,9 +34,8 @@ namespace BattleShip
 
         SimpleTcpClient client;
         private Point receivePoint;
-        private int receiveCondition;
-        private bool isReceived = false;
-
+        private int receiveCondition, sendCondition, moveCount = 0;
+        private bool isReceived;
 
         public MainForm()
         {
@@ -125,19 +124,16 @@ namespace BattleShip
                                 if (!string.IsNullOrEmpty(step.ToString()))
                                 {
                                     client.Send(step.ToString());
+                                    moveCount++;
                                 }
-                                if (isReceived)
-                                {
-                                    if (receiveCondition == 1)
-                                    {
-                                        ((Button)sender).BackColor = Color.LightGreen;
-                                    }
-                                    else
-                                    {
-                                        ((Button)sender).BackColor = Color.DarkGray;
-                                        GameButs.Enabled = false;
-                                    }
-                                }
+                            }
+                            if (receiveCondition == 1)
+                            {
+                                ((Button)sender).BackColor = Color.LightGreen;
+                            }
+                            else if (receiveCondition == 0)
+                            {
+                                ((Button)sender).BackColor = Color.DarkGray;
                             }
                         }
                         catch (Exception ex)
@@ -160,6 +156,10 @@ namespace BattleShip
                         }
                         break;
                 }
+            }
+            else
+            {
+
             }
             DrawController.DrawField(BattleField, field, playerField);
         }
@@ -298,6 +298,7 @@ namespace BattleShip
                 else
                 {
                     GameButs.Enabled = true;
+                    isReceived = false;
                     string receiveMes1 = "";
                     for (int i = 0; i < receiveMes.Length; i++)
                     {
@@ -309,15 +310,18 @@ namespace BattleShip
                     receivePoint = new Point(Convert.ToInt32(Char.GetNumericValue(receiveMes1[0])), Convert.ToInt32(Char.GetNumericValue(receiveMes1[1])));
                     if (playerField[receivePoint.Y, receivePoint.X] == SHIP_CELL)
                     {
+                        GameButs.Enabled = true;
                         playerField[receivePoint.Y, receivePoint.X] = HIT_CELL;
-                        receiveCondition = 1;
-                        client.Send(receiveCondition.ToString());
+                        sendCondition = 1;
+                        if (CheckField(playerField, HIT_CELL) == 20) MessageBox.Show("Win!");
+                        client.Send(sendCondition.ToString());
                     }
                     else
                     {
+                        GameButs.Enabled = false;
                         playerField[receivePoint.Y, receivePoint.X] = MISS_CELL;
-                        receiveCondition = 0;
-                        client.Send(receiveCondition.ToString());
+                        sendCondition = 0;
+                        client.Send(sendCondition.ToString());
                     }
                     DrawController.DrawField(BattleField, field, playerField);
                 }

@@ -47,19 +47,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bulat\\.nuget\\packages\\": {}
+    "C:\\Users\\Tester\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
+      "projectUniqueName": "D:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
       "projectName": "BattleShipServer",
-      "projectPath": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
-      "packagesPath": "C:\\Users\\bulat\\.nuget\\packages\\",
-      "outputPath": "B:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\obj\\",
+      "projectPath": "D:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\BattleShipServer.csproj",
+      "packagesPath": "C:\\Users\\Tester\\.nuget\\packages\\",
+      "outputPath": "D:\\Bulat\\Projects\\BattleShip\\BattleShipServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bulat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tester\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -108,7 +108,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

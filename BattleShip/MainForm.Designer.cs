@@ -1503,7 +1503,6 @@ namespace BattleShip
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Click += new System.EventHandler(this.GameButClick);
             ((System.ComponentModel.ISupportInitialize)(this.BattleField)).EndInit();
             this.Actions.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
